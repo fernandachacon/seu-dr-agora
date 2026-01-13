@@ -1,0 +1,13 @@
+<button
+    class="btn"
+    [class.primary]="variant === 'primary'"
+    [class.secondary]="variant === 'secondary'"
+    [disabled]="disabled || loading"
+    (click)="submit()"
+>
+    @if (!loading) {
+        {{ btnText }}
+    } @else {
+        Carregando...
+    }
+</button>

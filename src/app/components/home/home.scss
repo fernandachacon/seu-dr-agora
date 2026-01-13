@@ -1,0 +1,341 @@
+@use 'color-variables' as vars;
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.main-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.cta-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.specialties {
+    padding: 30px 0; // espaço acima e abaixo da seção
+    background-color: white;
+}
+
+.specialties-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: vars.$primary-color; // roxo
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: vars.$primary-color;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: #9b7bb5;
+}
+
+.card-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: vars.$primary-color;
+}
+
+.card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-features li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14px;
+    color: vars.$primary-color;
+}
+
+.card-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: vars.$secondary-color; // verde check
+}
+
+.card .btn {
+    margin-top: auto; // empurra o botão para o final
+    height: 47px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: white;
+    color: vars.$primary-color;
+}
+
+.how-it-works {
+    padding: 60px 24px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: vars.$primary-color;
+    margin-bottom: 48px;
+}
+
+.steps {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.step-card {
+    position: relative;
+
+    background-color: vars.$secondary-color; // verde
+    border-radius: 20px;
+    padding: 56px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+}
+
+.step-card p {
+    font-size: 18px;
+    font-weight: 600;
+    color: vars.$primary-color;
+    line-height: 1.4;
+}
+
+.step-number {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    background-color: vars.$primary-color;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media (min-width: 1080x) {
+    .main-section {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 1024px) {
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+.diferenciais {
+    padding: 80px 20px;
+    text-align: center;
+
+    &__titulo {
+        font-size: 32px;
+        font-weight: 600;
+        color: #4b1f6f; // roxo do título
+        margin-bottom: 48px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.diferencial-card {
+    border: 2px solid #4fc3a1; // verde da borda
+    border-radius: 16px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    img {
+        width: 48px;
+        height: 48px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+        color: #4fc3a1;
+        line-height: 1.4;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.faq {
+    position: relative;
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 2;
+
+    &__titulo {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+        color: #4b1f6f;
+        margin-bottom: 40px;
+    }
+
+    &__lista {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+.faq-item {
+    background-color: #e9f7f4;
+    border-radius: 8px;
+    border: 1px solid #9ad9c8;
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+
+    &__numero {
+        background-color: #a7ddd0;
+        color: #4b1f6f;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 6px 10px;
+        min-width: 36px;
+        text-align: center;
+    }
+
+    &__pergunta {
+        flex: 1;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        color: #4b1f6f;
+    }
+
+    &__icone {
+        background: none;
+        border: none;
+        width: 14px;
+        height: 14px;
+        border-right: 3px solid #6fcdb8;
+        border-bottom: 3px solid #6fcdb8;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    &__content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0 20px 0 72px;
+        transition: max-height 0.35s ease, opacity 0.25s ease;
+        font-size: 14px;
+        color: #4b1f6f;
+    }
+
+    &.active {
+        .faq-item__content {
+        max-height: 300px;
+        opacity: 1;
+        padding-bottom: 16px;
+        }
+
+        .faq-item__icone {
+        transform: rotate(-135deg);
+        }
+    }
+}
+
+/* Overlay invisível */
+    .faq-overlay {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    z-index: 1;
+}

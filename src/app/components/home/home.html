@@ -1,0 +1,197 @@
+<app-header></app-header>
+<main>
+    <section class="main-section pad-70">
+        <div class="headline">
+
+        </div>
+        <img ngSrc="/images/banner.jpeg" alt="" width="1200" height="650" class="banner">
+    </section>
+
+    <section class="specialties">
+        <div class="specialties-container">
+            <h2 class="section-title">Especialidades</h2>
+            <div class="cards">
+                <!-- Card -->
+                <div class="card">
+                    <h3 class="card-title">Clínica Médica</h3>
+                    <span class="card-subtitle">For individuals</span>
+
+                    <div class="card-price">R$ 69</div>
+
+                    <ul class="card-features">
+                    <li>Atendimento médico qualificado</li>
+                    <li>Todas as idades</li>
+                    <li>De segunda a sexta, quando precisar</li>
+                    <li>Solicitação e análise de exames</li>
+                    <li>Atestado, se indicado</li>
+                    <li>Renovação de receitas</li>
+                    </ul>
+
+                    <button class="btn secondary">Marcar Consulta</button>
+                </div>
+                <!-- Repita para os outros cards -->
+                <!-- Card -->
+                <div class="card">
+                    <h3 class="card-title">Clínica Médica</h3>
+                    <span class="card-subtitle">For individuals</span>
+
+                    <div class="card-price">R$ 69</div>
+
+                    <ul class="card-features">
+                    <li>Atendimento médico qualificado</li>
+                    <li>Todas as idades</li>
+                    <li>De segunda a sexta, quando precisar</li>
+                    <li>Solicitação e análise de exames</li>
+                    <li>Atestado, se indicado</li>
+                    <li>Renovação de receitas</li>
+                    </ul>
+
+                    <button class="btn secondary">Marcar Consulta</button>
+                </div>
+                <!-- Repita para os outros cards -->
+                <!-- Card -->
+                <div class="card">
+                    <h3 class="card-title">Clínica Médica</h3>
+                    <span class="card-subtitle">For individuals</span>
+
+                    <div class="card-price">R$ 69</div>
+
+                    <ul class="card-features">
+                    <li>Atendimento médico qualificado</li>
+                    <li>Todas as idades</li>
+                    <li>De segunda a sexta, quando precisar</li>
+                    <li>Solicitação e análise de exames</li>
+                    <li>Atestado, se indicado</li>
+                    <li>Renovação de receitas</li>
+                    </ul>
+
+                    <button class="btn secondary">Marcar Consulta</button>
+                </div>
+                <!-- Repita para os outros cards -->
+                <!-- Card -->
+                <div class="card">
+                    <h3 class="card-title">Clínica Médica</h3>
+                    <span class="card-subtitle">For individuals</span>
+
+                    <div class="card-price">R$ 69</div>
+
+                    <ul class="card-features">
+                    <li>Atendimento médico qualificado</li>
+                    <li>Todas as idades</li>
+                    <li>De segunda a sexta, quando precisar</li>
+                    <li>Solicitação e análise de exames</li>
+                    <li>Atestado, se indicado</li>
+                    <li>Renovação de receitas</li>
+                    </ul>
+
+                    <button class="btn secondary">Marcar Consulta</button>
+                </div>
+                <!-- Repita para os outros cards -->
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works">
+        <h2 class="section-title">
+            Como agendar sua consulta?
+        </h2>
+
+        <div class="steps">
+            <div class="step-card">
+            <span class="step-number">01</span>
+            <p>Escolha a especialidade desejada</p>
+            </div>
+
+            <div class="step-card">
+            <span class="step-number">02</span>
+            <p>Preencha seus dados e efetue o pagamento</p>
+            </div>
+
+            <div class="step-card">
+            <span class="step-number">03</span>
+            <p>Escolha o dia e horário da sua consulta online</p>
+            </div>
+
+            <div class="step-card">
+            <span class="step-number">04</span>
+            <p>Aguarde o link da sua consulta</p>
+            </div>
+        </div>
+    </section>
+    <section class="diferenciais">
+        <h2 class="diferenciais__titulo">Nossos Diferenciais</h2>
+
+        <div class="diferenciais__grid">
+            <div class="diferencial-card">
+            <img src="/images/icon-cadeado.jpeg" alt="Segurança e privacidade">
+            <p>Segurança e privacidade conforme a LGPD</p>
+            </div>
+
+            <div class="diferencial-card">
+            <img src="/images/icon-esteto.jpeg" alt="Medicina humanizada">
+            <p>Medicina Humanizada</p>
+            </div>
+
+            <div class="diferencial-card">
+            <img src="/images/icon-seta.jpeg" alt="Acesso rápido">
+            <p>Acesso rápido e facilitado</p>
+            </div>
+
+            <div class="diferencial-card">
+            <img src="/images/icon-prancheta.jpeg" alt="Solicitação de exames">
+            <p>Solicitação de exames e laudos</p>
+            </div>
+
+            <div class="diferencial-card">
+            <img src="/images/icon-medico.jpeg" alt="Profissionais capacitados">
+            <p>Profissionais capacitados</p>
+            </div>
+
+            <div class="diferencial-card">
+            <img src="/images/icon-prancheta.jpeg" alt="Atestados e receitas">
+            <p>Atestados e renovação de receitas</p>
+            </div>
+        </div>
+    </section>
+    <section class="faq">
+        <h2 class="faq__titulo">Dúvidas mais frequentes</h2>
+
+        <div class="faq__lista">
+            <div
+            class="faq-item"
+            *ngFor="let item of faqs; let i = index"
+            [class.active]="activeIndex === i"
+            >
+            <div class="faq-item__header">
+                <span class="faq-item__numero">
+                {{ i + 1 | number:'2.0' }}
+                </span>
+
+                <p class="faq-item__pergunta">
+                {{ item.pergunta }}
+                </p>
+
+                <!-- AQUI abre/fecha -->
+                <button
+                type="button"
+                class="faq-item__icone"
+                (click)="toggle(i)"
+                aria-label="Abrir resposta"
+                ></button>
+            </div>
+
+            <div class="faq-item__content">
+                <p>{{ item.resposta }}</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Overlay invisível para fechar ao clicar fora -->
+<div
+    class="faq-overlay"
+  *ngIf="activeIndex !== null"
+    (click)="closeFaq()"
+></div>
+</main>
+<app-footer></app-footer>
+

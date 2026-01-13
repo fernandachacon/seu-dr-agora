@@ -1,0 +1,34 @@
+@use 'color-variables' as vars;
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 70px;
+
+
+    background: vars.$secondary-color;
+
+    h3 {
+        font-size: 36px;
+        font-weight: 600;
+        color: white;
+
+
+    }
+
+    form{
+        flex: 1;
+    }
+}
+
+@media (min-width: 1080x) {
+    .form-section {
+        flex-direction: row;
+        gap: 115px;
+
+        padding: 40px 120px;
+    }
+}
