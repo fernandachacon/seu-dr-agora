@@ -16,6 +16,7 @@ main{
     background-color: rgba(255, 255, 255, 0.7);
 }
 
+
 .cta-section {
     display: flex;
     justify-content: center;
@@ -60,18 +61,18 @@ main{
 }
 
 .card-title {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: vars.$primary-color;
 }
 
 .card-subtitle {
-    font-size: 14px;
+    font-size: 18px;
     color: #9b7bb5;
 }
 
 .card-price {
-    font-size: 36px;
+    font-size: 56px;
     font-weight: 700;
     color: vars.$primary-color;
 }
@@ -89,7 +90,7 @@ main{
 .card-features li {
     position: relative;
     padding-left: 20px;
-    font-size: 14px;
+    font-size: 18px;
     color: vars.$primary-color;
 }
 
@@ -104,13 +105,21 @@ main{
     margin-top: auto; // empurra o botão para o final
     height: 47px;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
     border-radius: 12px;
     cursor: pointer;
     background-color: white;
     color: vars.$primary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: vars.$primary-color; // fundo roxo
+      color: white;                           // texto branco
+      border-color: vars.$primary-color;      // borda roxa
+    }
+
 }
 
 .how-it-works {
@@ -146,14 +155,14 @@ main{
     align-items: center;
     justify-content: center;
 
-    min-height: 220px;
+    width: 290px;
+    min-height: 296px;
 }
 
 .step-card p {
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 600;
     color: vars.$primary-color;
-    line-height: 1.4;
 }
 
 .step-number {
@@ -207,11 +216,11 @@ main{
     }
 
     &__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
-        max-width: 1200px;
-        margin: 0 auto;
+         display: flex;
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
     }
 }
 
@@ -223,6 +232,8 @@ main{
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    width: 190px;
+    height: 296px;
     background-color: rgba(255, 255, 255, 0.7);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
