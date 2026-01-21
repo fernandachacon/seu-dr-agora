@@ -1,49 +1,78 @@
 <app-header></app-header>
+<main>
+<div class="page-container">
+    <h1>Crie sua conta</h1>
+    <div class="content-container">
+    <form [formGroup]="form">
+        <h3>Informações Pessoais</h3>
+        <div class="form-group">
+            <label>Nome completo*</label>
+            <input type="text" formControlName="nome" />
+            <small *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')">
+                Nome é obrigatório
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF*</label>
+            <input type="text" id="cpf" maxlength="14" placeholder="Ex: 123.456.789-00" />
+        </div>
+        <div class="form-group">
+            <label>Celular*</label>
+            <input type="tel" placeholder="(00) 90000-0000" />
+        </div>
+        <div class="form-group">    
+            <label>Gênero*</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="genero" /> Feminino</label> <br>
+                    <label><input type="radio" name="genero" /> Masculino</label> <br>
+                    <label><input type="radio" name="genero" /> Não-binário (ou outra identidade) </label> <br>
+                    <label><input type="radio" name="genero" /> Prefiro não responder </label>
+                </div>
+        </div>
+        <div class="form-group">
+            <label>Data de nascimento*</label>
+            <input type="date" />
+        </div>
+        <div class="form-group"> 
+            <label for="cep">CEP*</label>
+            <input type="text" id="cep" maxlength="9" placeholder="Ex: 12345-789" />
+        </div> 
+        <h3>Dados da conta</h3>
+        <div class="form-group">
+            <label>E-mail*</label>
+            <input type="email" formControlName="email" />
+            <small *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">
+                E-mail inválido
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" formControlName="senha" />
+        </div>
 
-<section class="form-section">
-    <h3>
-        Título do form
-    </h3>
-    <form action="">
-        <label>Nome*</label>
-        <input type="text" placeholder="Digite seu nome" />
-
-        <label for="email">E-mail*</label>
-        <input id="email" type="email" placeholder="Digite seu e-mail" />
-
-        <label>Gênero*</label>
-            <div class="radio-group">
-                <label><input type="radio" name="genero" /> Feminino</label>
-                <label><input type="radio" name="genero" /> Masculino</label>
-                <label><input type="radio" name="genero" /> Outros</label>
-            </div>
-
-        <label for="cpf">CPF*</label>
-        <input type="text" id="cpf" maxlength="14" placeholder="Ex: 123.456.789-00" />
-
-        <label>Celular*</label>
-        <input type="tel" placeholder="(00) 90000-0000" />
-
-        <label>Data de nascimento*</label>
-        <input type="date" />
-
-        <label for="cep">CEP*</label>
-        <input type="text" id="cep" maxlength="9" placeholder="Ex: 12345-789" />
-
-        <label>Senha*</label>
-        <input type="password" placeholder="Digite sua senha" />
-
-        <label>Confirme sua senha*</label>
-        <input type="password" placeholder="Confirme sua senha" />
+        <div class="form-group">
+            <label>Confirme sua senha*</label>
+            <input type="password" />
+        </div>    
 
         <div class="checkbox-section">
             <input type="checkbox" id="checkbox-termos" />
             <label for="checkbox-termos">Li e concordo com os<a href="/#/terms" target="_blank">Termos e Condições de Uso da Plataforma de Saúde</a>
             </label>
         </div>
-
-        <btn-primary btn-text="Cadastrar"></btn-primary>
-
+        <button type="button" class="btn-cadastrar">Cadastrar</button>
+        <p class="footer-text"> Já possui uma conta? <a>Entrar</a> </p>
     </form>
-
-</section>
+    </div>
+    <!-- BANNER -->
+    <div class="image-container">
+        <img
+            ngSrc="/images/banner.jpeg"
+            width="600"
+            height="600"
+            alt="Família usando celular"
+        />
+    </div>
+</div>
+</main>
+<app-footer></app-footer>

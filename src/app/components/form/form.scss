@@ -1,34 +1,98 @@
 @use 'color-variables' as vars;
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
 
-.form-section {
+.page-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 40px 70px;
-
-
-    background: vars.$secondary-color;
-
-    h3 {
-        font-size: 36px;
-        font-weight: 600;
-        color: white;
-
-
-    }
-
-    form{
-        flex: 1;
-    }
+    min-height: 100vh;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
-@media (min-width: 1080x) {
-    .form-section {
-        flex-direction: row;
-        gap: 115px;
+.content-container {
+    flex: 1;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-        padding: 40px 120px;
+}
+
+.image-container {
+    flex: 1;
+    background-color: #f5f6fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    color: vars.$primary-color;
+
+    label {
+        margin-bottom: 6px;
+        font-family: 'Poppins', sans-serif;
     }
+
+    input {
+        padding: 12px;
+        border-radius: 8px;
+        //border: 1px solid #ccc; como estava antes, um cinza
+        border: 1px solid vars.$primary-color;
+    }
+
+    small {
+        color: red;
+        margin-top: 4px;
+    }
+    }
+
+.btn {
+    justify-content: center;
+    align-items: center;
+}
+.btn-voltar {
+    background: #7cead3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.login-link {
+    font-size: 12px;
+    color: #6c63ff;
+    cursor: pointer;
+}
+h1 {
+    color: #4a148c;
+    margin-bottom: 24px;
+}
+h3 {
+    margin: 24px 0 12px;
+    color: #4a148c;
+    font-size: 14px;
+}
+.btn-cadastrar {
+    width: 100%;
+    margin-top: 32px;
+    padding: 12px;
+    background: #4a148c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.footer-text {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+}
+.footer-text a {
+    color: #6a1b9a;
+    cursor: pointer;
 }
