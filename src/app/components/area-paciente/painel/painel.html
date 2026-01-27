@@ -1,0 +1,15 @@
+<h1>Painel</h1>
+
+<section>
+    <h2>Pronto Atendimento</h2>
+
+    <div class="cards">
+        @for (servico of servicos; track servico.titulo) {
+        <div class="card">
+            <h3>{{ servico.titulo }}</h3>
+            <strong>R$ {{ servico.preco }}</strong>
+        </div>
+        }
+    </div>
+</section>
+

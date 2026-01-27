@@ -55,7 +55,7 @@ export class Home {
 
   ];
 
-  toggle(index: number): void {
+  toggle(index: number) {
     alert('clicou ' + index);
     this.activeIndex = this.activeIndex === index ? null : index;
   }

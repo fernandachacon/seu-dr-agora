@@ -1,19 +1,37 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
 
+// Proposta de melhoria: Variável de espaçamento padrão para manter consistência
+$section-spacing: 48px;
+$footer-gap: 80px; // O espaço que você pediu para o footer
+
 main{
     display: flex;
     flex-direction: column;
     gap: 10px;
     font-family: 'Inter', sans-serif;
     background-color: rgba(255, 255, 255, 0.7);
+
+    // MELHORIA: Espaço entre o conteúdo final e o footer
+    padding-bottom: $footer-gap;
 }
 .main-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.7);
+    //background-color: rgba(255, 255, 255, 0.7);
+    // Removi o background-color aqui para o banner brilhar sozinho
+    width: 100%;
+}
+
+// MELHORIA: Banner Responsivo
+.banner {
+    width: 100%;
+    max-width: 100%;
+    height: auto; // Mantém a proporção
+    display: block;
+    object-fit: cover; // Garante que preencha bem o espaço
 }
 
 
@@ -24,15 +42,14 @@ main{
 }
 
 .specialties {
-    //padding: 30px 0; // espaço acima e abaixo da seção
     background-color: white;
-    padding-top: 48px;
+    //padding-top: 48px;
+    padding-top: $section-spacing;
 }
 
 .specialties-container {
     max-width: 1200px;
     margin: 0 auto;
-    //padding: 0 24px;
 }
 
 .section-title {
@@ -124,8 +141,7 @@ main{
 }
 
 .how-it-works {
-    //padding: 60px 24px;
-    padding-top: 48px;
+    padding-top: $section-spacing;
     background-color: #fff;
     text-align: center;
 }
@@ -188,7 +204,7 @@ main{
     font-weight: 700;
 }
 
-@media (min-width: 1080x) {
+@media (min-width: 1080px) {
     .main-section {
         flex-direction: row;
     }
@@ -207,7 +223,6 @@ main{
 }
 
 .diferenciais {
-    //padding: 80px 20px;
     text-align: center;
     padding-top: 48px;
 
@@ -219,7 +234,7 @@ main{
     }
 
     &__grid {
-         display: flex;
+    display: flex;
     gap: 14px;
     max-width: 1200px;
     margin: 0 auto;
@@ -260,9 +275,13 @@ main{
 
 .faq {
     position: relative;
+    z-index: 10; /* Aumente o z-index para garantir que está no topo */
+    pointer-events: auto !important; /* Força a aceitação de cliques */
     margin: 0 auto;
-    z-index: 2;
-    padding-top: 48px;
+    //z-index: 2;
+    //padding-top: 48px;
+    padding-top: $section-spacing;
+    width: 100%; // Garante que ocupe a largura total
 
     &__titulo {
         text-align: center;
@@ -276,6 +295,7 @@ main{
         display: flex;
         flex-direction: column;
         gap: 16px;
+        padding: 0 24px; // Respiro lateral para telas menores
     }
 }
 
@@ -292,6 +312,8 @@ main{
     &__header {
         display: flex;
         align-items: center;
+        cursor: pointer; /* Garante que o mouse mude para a "mãozinha" */
+        user-select: none; /* Evita que o texto seja selecionado ao clicar rápido */
         gap: 16px;
         padding: 16px 20px;
     }
@@ -338,9 +360,14 @@ main{
 
     &.active {
         .faq-item__content {
-        max-height: 300px;
+        //max-height: 300px;
+        //opacity: 1;
+        //padding-bottom: 16px;
+        //margin-bottom: 32px;
+        max-height: 1000px; /* Valor alto para garantir que nada seja cortado */
         opacity: 1;
-        padding-bottom: 16px;
+        padding-bottom: 24px;
+        margin-bottom: 10px;
         }
 
         .faq-item__icone {
@@ -352,5 +379,5 @@ main{
 
 .faq,
 .faq * {
-  pointer-events: auto !important;
+    pointer-events: auto !important;
 }

@@ -4,7 +4,7 @@
         <div class="headline">
 
         </div>
-        <img ngSrc="/images/banner home marcos pasquim.jpeg" alt="" width="1600" height="500" class="banner">
+        <img ngSrc="/images/banner-home.png" alt="" width="1600" height="500" class="banner">
     </section>
 
     <section class="specialties">
@@ -14,8 +14,8 @@
             <div class="cards">
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Clínica Médica</h3>
-                    <span class="card-subtitle">Médico Clínico Geral</span>
+                    <h3 class="card-title">Atendimento em Clínica Médica</h3>
+                    <span class="card-subtitle">Médico <br> Clínico Geral</span>
 
                     <div class="card-price">R$ 69</div>
 
@@ -51,13 +51,13 @@
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Atendimento médico em Saúde Mental</h3>
+                    <h3 class="card-title">Atendimento Médico em Saúde Mental</h3>
                     <span class="card-subtitle">Pós-graduação em Psiquiatria</span>
 
                     <div class="card-price">R$ 169</div>
 
                     <ul class="card-features">
-                    <li>Controle de Ansiedade, Estresse e Pânico</li>
+                    <li>Controle de ansiedade, estresse e pânico</li>
                     <li>Depressão e alterações de humor</li>
                     <li>Dificuldades relacionadas ao sono</li>
                     <li>Avaliação e acompanhamento médico</li>
@@ -76,13 +76,13 @@
                     <div class="card-price">R$ 169</div>
 
                     <ul class="card-features">
+                    <li>Obesidade e perda de Peso</li>
                     <li>Alterações hormonais</li>
                     <li>Diabetes e pré-diabetes</li>
-                    <li>Distúrbios da tireoide</li>
+                    <li>Distúrbios da tireóide</li>
                     <li>Controle de peso e metabolismo</li>
                     <li>Solicitação e análise de exames</li>
-                    <li>Obesidade e perda de Peso</li>
-                    <li>Distúrbios Hormonais Feminino</li>
+                    <li>Distúrbios hormonais femininos</li>
                     </ul>
 
                     <button class="btn secondary">Marcar Consulta</button>
@@ -128,12 +128,12 @@
         <div class="diferenciais__grid">
             <div class="diferencial-card">
             <img src="/images/icon-cadeado.png" alt="Segurança e privacidade">
-            <p>Segurança e privacidade conforme a LGPD</p>
+            <p>Segurança e privacidade (LGPD)</p>
             </div>
 
             <div class="diferencial-card">
             <img src="/images/icon-esteto.png" alt="Medicina humanizada">
-            <p>Medicina Humanizada</p>
+            <p>Medicina humanizada</p>
             </div>
 
             <div class="diferencial-card">
@@ -153,7 +153,7 @@
 
             <div class="diferencial-card">
             <img src="/images/icon-prancheta.png" alt="Atestados e receitas">
-            <p>Atestados e renovação de receitas</p>
+            <p>Atestado e renovação de receitas</p>
             </div>
         </div>
         </div>
@@ -170,7 +170,7 @@
                 >
                 <div
                     class="faq-item__header"
-                    (click)="toggle(i); $event.stopPropagation()"
+                    (click)="toggle(i)"
                 >
                     <span class="faq-item__numero">
                     {{ i + 1 | number:'2.0' }}
@@ -190,8 +190,6 @@
         </div>
         </div>
     </section>
-
-
 </main>
 <app-footer></app-footer>
 
