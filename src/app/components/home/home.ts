@@ -63,5 +63,9 @@ export class Home {
   closeFaq(): void {
     this.activeIndex = null;
   }
+
+  testeClique() {
+    alert('CLICOU');
+  }
 }
 
