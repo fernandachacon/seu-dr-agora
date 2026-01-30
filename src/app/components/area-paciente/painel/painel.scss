@@ -1,22 +1,40 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap";
 
-.h1 {
-    font-family: 'Poppins', sans-serif;
+.main {
+    margin: 0;
+    padding: 0;
+    min-width: 320px; /* Mínimo para telas de celular */
+    min-height: 75vh; /* Altura da tela */
+}
+.titulo {
+    font-family: 'Inter', sans-serif;
+    color: vars.$primary-color; // roxo
+}
+
+.titulo2 {
+    font-family: 'Inter', sans-serif;
+    color: vars.$primary-color; // roxo
 }
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 24px;
     margin-top: 24px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .card {
     background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 32px 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+
     cursor: pointer;
     transition: transform .2s;
 }
@@ -25,12 +43,16 @@
     transform: translateY(-4px);
 }
 
+//Título do card
 .card h3 {
-    color: #4b0f77;
+    font-family: 'Inter', sans-serif;
+    color: vars.$primary-color; // roxo
     font-size: 16px;
 }
 
+//Preco do card
 .card strong {
+    font-family: 'Inter', sans-serif;
     font-size: 22px;
-    color: #4b0f77;
+    color: vars.$primary-color; // roxo
 }
