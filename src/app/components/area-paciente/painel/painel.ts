@@ -10,11 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class Painel {
   servicos = [
-    { titulo: 'Plantão Médico 24H', preco: 69 },
-    { titulo: 'Renovação de Receita', preco: 69 },
-    { titulo: 'Psicologia', preco: 69 },
-    { titulo: 'Endocrinologia', preco: 69 },
-    { titulo: 'Psiquiatria', preco: 69 },
-    { titulo: 'Nutrição', preco: 69 }
+    { titulo: 'Atendimento em Clínica Médica', preco: 69 },
+    { titulo: 'Atendimento Médico em Otorrino', preco: 169 },
+    { titulo: 'Atendimento Médico em Saúde Mental', preco: 169 },
+    { titulo: 'Atendimento Médico em Endocrinologia', preco: 169 },
+    { titulo: 'Psicologia', preco: 69 }
   ];
 }
