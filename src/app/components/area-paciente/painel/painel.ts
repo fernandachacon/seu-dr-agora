@@ -14,6 +14,6 @@ export class Painel {
     { titulo: 'Atendimento Médico em Otorrino', preco: 169 },
     { titulo: 'Atendimento Médico em Saúde Mental', preco: 169 },
     { titulo: 'Atendimento Médico em Endocrinologia', preco: 169 },
-    { titulo: 'Psicologia', preco: 69 }
+    { titulo: 'Atendimento com Psicólogo', preco: 69 }
   ];
 }
