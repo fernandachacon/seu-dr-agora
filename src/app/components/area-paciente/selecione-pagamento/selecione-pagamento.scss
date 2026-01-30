@@ -1,0 +1,42 @@
+@use 'color-variables' as vars;
+
+.pagamento-container {
+    max-width: 420px;
+    margin: 80px auto;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    color: vars.$third-color;
+    font-size: 22px;
+    margin-bottom: 8px;
+    }
+
+.subtitulo {
+    font-size: 14px;
+    color: vars.$primary-color;
+    margin-bottom: 32px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn-pagamento {
+    background-color: #c7f2eb;
+    border: 1px solid #9eddd3;
+    color: #2f6f67;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        filter: brightness(0.95);
+    }
+}

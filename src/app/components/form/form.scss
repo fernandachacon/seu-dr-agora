@@ -1,40 +1,49 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
 
+.main {
+    display: flex;
+}
 .page-container {
     display: flex;
     min-height: 100vh;
-    gap: 10px;
+    gap: 5px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .content-container {
-    flex: 1;
+    flex: 0 0 50%;
     padding: 64px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 
 }
 
 .image-container {
-    flex: 1;
+    //flex: 0 0 50%; /* Define a div como 50% e impede que ela encolha */
     background-color: #f5f6fa;
-    display: flex;
+    //display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%; /* Ocupa 50% da largura da janela (viewport) */
+    /* Se quiser 50% do elemento pai, use: width: 50%; */
+    
+    height: auto; /* A altura se ajusta automaticamente */
+    overflow: hidden; /* Evita que o conteúdo extra da imagem apareça */
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     color: vars.$primary-color;
 
     label {
-        margin-bottom: 6px;
+        margin-bottom: 5px;
         font-family: 'Poppins', sans-serif;
+        font-size: 16px;
     }
 
     input {
@@ -67,14 +76,17 @@
     color: #6c63ff;
     cursor: pointer;
 }
+
 h1 {
-    color: #4a148c;
-    margin-bottom: 24px;
+    color: vars.$third-color;
+    margin-bottom: 0;
+    font-size: 25px;
+    text-align: center;
 }
 h3 {
-    margin: 24px 0 12px;
+    margin: 10px 0 12px; //aproxima do h1
     color: #4a148c;
-    font-size: 14px;
+    font-size: 16px;
 }
 .btn-cadastrar {
     width: 100%;
@@ -85,14 +97,21 @@ h3 {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
     font-weight: 600;
 }
 .footer-text {
     text-align: center;
+    color: vars.$third-color;
     margin-top: 16px;
-    font-size: 12px;
+    font-size: 16px;
 }
 .footer-text a {
-    color: #6a1b9a;
+    color: vars.$third-color;
     cursor: pointer;
+    font-weight: 600;
+}
+
+.checkbox-termos {
+    color: vars.$third-color;
 }

@@ -1,9 +1,9 @@
 <app-header></app-header>
 <main>
 <div class="page-container">
-    <h1>Crie sua conta</h1>
     <div class="content-container">
-    <form [formGroup]="form">
+    <h1>Crie sua conta</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
         <h3>Informações Pessoais</h3>
         <div class="form-group">
             <label>Nome completo*</label>
@@ -57,20 +57,20 @@
 
         <div class="checkbox-section">
             <input type="checkbox" id="checkbox-termos" />
-            <label for="checkbox-termos">Li e concordo com os<a href="/#/terms" target="_blank">Termos e Condições de Uso da Plataforma de Saúde</a>
+            <label class= "checkbox-termos" for="checkbox-termos"> Li e concordo com os<a href="/#/terms" target="_blank"> Termos e Condições de Uso da Plataforma de Saúde</a>
             </label>
         </div>
-        <button type="button" class="btn-cadastrar">Cadastrar</button>
+        <button type="submit" class="btn-cadastrar">Cadastrar</button>
         <p class="footer-text"> Já possui uma conta? <a>Entrar</a> </p>
     </form>
     </div>
     <!-- BANNER -->
     <div class="image-container">
         <img
-            ngSrc="/images/banner.jpeg"
-            width="600"
-            height="600"
-            alt="Família usando celular"
+            ngSrc="/images/plataforma-segura.png"
+            width="840"
+            height="1150"
+            alt="Plataforma segura"
         />
     </div>
 </div>

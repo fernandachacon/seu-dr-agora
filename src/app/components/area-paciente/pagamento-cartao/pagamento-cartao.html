@@ -1,0 +1,43 @@
+<section class="cartao-container">
+    <h3 class="valor">
+        Valor <span>R$ {{ valor | number:'1.2-2' }}</span>
+    </h3>
+
+    <form [formGroup]="form">
+        <div class="campo">
+        <label>Número do Cartão</label>
+        <input type="text" formControlName="numeroCartao" />
+        </div>
+
+        <div class="campo">
+        <label>Nome (como no cartão)</label>
+        <input type="text" formControlName="nomeCartao" />
+        </div>
+
+        <div class="linha">
+        <div class="campo">
+            <label>Validade do cartão</label>
+            <input type="text" placeholder="MM/AA" formControlName="validade" />
+        </div>
+
+        <div class="campo">
+            <label>Código de Segurança (CVV)</label>
+            <input type="password" formControlName="cvv" />
+        </div>
+        </div>
+
+        <div class="botoes">
+        <button type="button" class="btn-voltar" (click)="voltar()">
+            Voltar
+        </button>
+
+        <button
+            type="button"
+            class="btn-pagar"
+            (click)="pagar()"
+        >
+            Efetuar Pagamento
+        </button>
+        </div>
+    </form>
+</section>

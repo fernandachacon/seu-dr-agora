@@ -1,0 +1,31 @@
+.topbar {
+    height: 64px;
+    background: linear-gradient(90deg, #4b0f77, #6a1bb1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    color: white;
+}
+
+.menu span {
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #eee;
+}
+
+.conteudo {
+    padding: 32px;
+}
