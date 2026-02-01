@@ -1,26 +1,23 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <title>Seu Doutor Agora!</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<header class="header">
+  <div class="header-container">
 
-<header class="header"> 
-    <div class="header-container">
-        <div class="left">
-        <!-- logo -->
-        </div>
-        <nav class="menu">
-            <a href="#">INÍCIO</a>
-            <a href="#">ÁREAS DE ATUAÇÃO</a>
-            <a href="#">COMO AGENDAR SUA CONSULTA</a>
-            <a href="#">NOSSOS DIFERENCIAIS</a>
-            <a href="#">DÚVIDAS</a>
-        </nav>
-        <section class="cta-section">
-            <btn-primary btn-text="MARCAR CONSULTA"></btn-primary>
-        </section>
+    <div class="left">
+      <!-- logo aqui -->
     </div>
+
+    <nav class="menu">
+      <a href="#inicio">INÍCIO</a>
+      <a href="#areas">ÁREAS DE ATUAÇÃO</a>
+      <a href="#como-agendar">COMO AGENDAR SUA CONSULTA</a>
+      <a href="#diferenciais">NOSSOS DIFERENCIAIS</a>
+      <a href="#duvidas">DÚVIDAS</a>
+    </nav>
+
+    <section class="cta-section">
+      <btn-primary btn-text="MARCAR CONSULTA" (click)="irParaCadastro()"></btn-primary>
+    </section>
+
+  </div>
 </header>
+
+

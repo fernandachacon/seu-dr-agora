@@ -1,14 +1,14 @@
 <app-header></app-header>
 
 <main>
-    <section class="main-section">
+    <section id="inicio" class="main-section">
         <div class="headline">
 
         </div>
         <img ngSrc="/images/banner-home.png" alt="" width="1695" height="500" class="banner">
     </section>
 
-    <section class="specialties">
+    <section id="areas" class="specialties">
         <div class="container">
         <div class="specialties-container">
             <h2 class="section-title">ÁREAS DE ATUAÇÃO</h2>
@@ -113,7 +113,7 @@
         </div>
         </div>
     </section>
-    <section class="how-it-works">
+    <section id="como-agendar" class="how-it-works">
         <div class="container">
         <h2 class="section-title">
             COMO AGENDAR SUA CONSULTA ONLINE?
@@ -142,7 +142,7 @@
         </div>
         </div>
     </section>
-    <section class="diferenciais">
+    <section id="diferenciais" class="diferenciais">
         <div class="container">
         <h2 class="diferenciais__titulo">NOSSOS DIFERENCIAIS</h2>
 
@@ -179,12 +179,8 @@
         </div>
         </div>
     </section>
-    <section class="faq">
-         <div 
-  class="faq-item"
-  (click)="testeClique()"
->
-        <div class="container">
+    <section id="duvidas" class="faq">
+        <div class="faq-item">
         <h2 class="faq__titulo">DÚVIDAS MAIS FREQUENTES</h2>
 
         <div class="faq__lista">
@@ -212,7 +208,6 @@
                     <p>{{ item.resposta }}</p>
                 </div>
                 </div>
-        </div>
         </div>
         </div>
     </section>

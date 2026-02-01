@@ -30,9 +30,15 @@ export class Form {
   ) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      celular: ['', Validators.required],
+      genero: ['', Validators.required],
+      data: ['', Validators.required],
+      cep: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefone: ['', Validators.required],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
+      senha: ['', Validators.required],
+      confirmarSenha: ['', Validators.required],
+      termos: [false, Validators.requiredTrue]
     });
   }
 

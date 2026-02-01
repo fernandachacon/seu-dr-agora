@@ -279,10 +279,6 @@ main{
     z-index: 10; /* Aumente o z-index para garantir que está no topo */
     pointer-events: auto !important; /* Força a aceitação de cliques */
     margin: 0 auto;
-    z-index: 9999;
-    padding-top: 48px;
-    //z-index: 2;
-    //padding-top: 48px;
     padding-top: $section-spacing;
     width: 100%; // Garante que ocupe a largura total
 
@@ -319,9 +315,6 @@ main{
         user-select: none; /* Evita que o texto seja selecionado ao clicar rápido */
         gap: 16px;
         padding: 16px 20px;
-        z-index: 9999;
-        cursor: pointer;
-        position: relative;
     }
 
     &__numero {
@@ -365,10 +358,6 @@ main{
 
     &.active {
         .faq-item__content {
-        //max-height: 300px;
-        //opacity: 1;
-        //padding-bottom: 16px;
-        //margin-bottom: 32px;
         max-height: 1000px; /* Valor alto para garantir que nada seja cortado */
         opacity: 1;
         padding-bottom: 24px;

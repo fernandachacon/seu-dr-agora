@@ -56,7 +56,6 @@ export class Home {
   ];
 
   toggle(index: number) {
-    alert('clicou ' + index);
     this.activeIndex = this.activeIndex === index ? null : index;
   }
 
@@ -64,8 +63,5 @@ export class Home {
     this.activeIndex = null;
   }
 
-  testeClique() {
-    alert('CLICOU');
-  }
 }
 

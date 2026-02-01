@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BtnPrimaryComponent } from "../btn-primary/btn-primary";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +10,11 @@ import { BtnPrimaryComponent } from "../btn-primary/btn-primary";
   styleUrl: './header.scss',
 })
 export class Header {
+
+  constructor(private router: Router) {}
+
+  irParaCadastro() {
+    this.router.navigate(['/form']);
+  }
 
 }
