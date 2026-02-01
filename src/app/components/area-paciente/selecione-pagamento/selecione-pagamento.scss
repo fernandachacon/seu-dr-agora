@@ -1,44 +1,53 @@
 @use 'color-variables' as vars;
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap";
 
 .main {
     margin: 0;
-    padding: 0;
     min-width: 320px; /* Mínimo para telas de celular */
-    min-height: 60vh; /* Altura da tela */
-}
-
-.pagamento-container {
-    max-width: 420px;
-    margin: 80px auto;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+    min-height: 75vh; /* Altura da tela */
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
 }
 
 h2 {
-    color: vars.$third-color;
-    font-size: 22px;
-    margin-bottom: 8px;
-    }
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: vars.$primary-color; // roxo
+    margin-bottom: 10px;
+}
 
-.subtitulo {
-    font-size: 14px;
-    color: vars.$primary-color;
-    margin-bottom: 32px;
+.pagamento-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
 }
 
 .botoes {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    max-width: 420px;   // tamanho dos botoes em relacao a area da container
+    margin: 0 auto;     // centraliza
+    width: 100%;
 }
 
-.btn-pagamento {
+.btn {
+    gap: 8px;
     background-color: #c7f2eb;
     border: 1px solid #9eddd3;
     color: #2f6f67;
     padding: 14px;
     border-radius: 8px;
-    font-size: 14px;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 420px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;

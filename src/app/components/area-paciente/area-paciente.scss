@@ -4,19 +4,18 @@
 
 .main {
     margin: 0;
-    padding: 0;
     min-width: 320px; /* Mínimo para telas de celular */
     min-height: 100vh; /* Altura da tela */
 }
 
 .topbar {
-    height: 64px;
+    height: 70px;
+    padding: 0px 360px;
     background: linear-gradient(90deg, #480A60);
     display: flex;
+    align-items: center;
     gap: 24px;
     justify-content: space-between;
-    align-items: center;
-    padding: 0px 360px;
     color: white;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -41,5 +40,5 @@
 }
 
 .conteudo {
-    padding: 0px 360px;
+    padding: 50px 360px; //Espaco entre o header e o conteudo
 }

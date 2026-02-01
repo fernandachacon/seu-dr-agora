@@ -1,14 +1,12 @@
 <main class="main">
     <section class="pagamento-container">
-    <h2>Plantão</h2>
-    <p class="subtitulo">Selecione o método de pagamento:</p>
-
+    <h2>Selecione o método de pagamento:</h2>
     <div class="botoes">
-        <button (click)="irParaPix()">
+        <button class="btn" (click)="irParaPix()">
             Pagar com PIX
         </button>
 
-        <button class="btn-pagamento" (click)="pagarCartao()">
+        <button class="btn" (click)="pagarCartao()">
             Pagar com Cartão de Crédito
         </button>
     </div>
