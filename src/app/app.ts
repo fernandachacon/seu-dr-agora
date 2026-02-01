@@ -10,6 +10,7 @@ import { Home } from './components/home/home';  //adicionei depois
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
+
 export class App {
   protected readonly title = signal('SEU_DR_AGORA');
 }
