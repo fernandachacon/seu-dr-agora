@@ -4,24 +4,36 @@
 
 .main {
     margin: 0;
-    padding: 0;
     min-width: 320px; /* Mínimo para telas de celular */
-    min-height: 75vh; /* Altura da tela */
-}
-.titulo {
+    min-height: 75vh; /* Altura da tela, está assim para aparecer o comeco do footer */
+    flex-direction: column;
     font-family: 'Inter', sans-serif;
-    color: vars.$primary-color; // roxo
+    background-color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
 }
 
-.titulo2 {
-    font-family: 'Inter', sans-serif;
+.titulo {
+    text-align: left;
+    font-size: 32px;
+    font-weight: 600;
     color: vars.$primary-color; // roxo
+    margin-bottom: 10px;
 }
+
+.painel {
+    background-color: white;
+}
+
+.painel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    //grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 24px;
-    margin-top: 24px;
 }
 
 .card {
@@ -44,15 +56,60 @@
 }
 
 //Título do card
-.card h3 {
+.card-title {
     font-family: 'Inter', sans-serif;
     color: vars.$primary-color; // roxo
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    white-space: pre-line;
 }
 
 //Preco do card
-.card strong {
+.card-price {
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    color: vars.$primary-color; // roxo
+    font-size: 45px;
+    font-weight: 700;
+    color: vars.$secondary-color; // roxo
+}
+
+.btn {
+    margin-top: auto; // empurra o botão para o final
+    height: 47px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: white;
+    color: vars.$primary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: vars.$primary-color; // fundo roxo
+      color: white;                           // texto branco
+      border-color: vars.$primary-color;      // borda roxa
+    }
+
+}
+
+.card:nth-child(1),
+.card:nth-child(2) {
+  grid-column: span 3; // 6 / 2 = 3 → dois cards na primeira linha
+}
+
+.card:nth-child(3),
+.card:nth-child(4),
+.card:nth-child(5) {
+  grid-column: span 2; // 6 / 3 = 2 → três cards na segunda linha
+}
+
+@media (max-width: 768px) {
+    .cards {
+    grid-template-columns: 1fr;
+    }
+
+    .card {
+    grid-column: span 1;
+    }
 }

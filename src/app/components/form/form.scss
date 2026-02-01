@@ -21,10 +21,16 @@
 
 }
 
+.topo {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: 100px; // 👈 aumenta o espaço entre botões e o h1
+    margin-bottom: 32px;
+}
+
 .image-container {
-    //flex: 0 0 50%; /* Define a div como 50% e impede que ela encolha */
     background-color: #f5f6fa;
-    //display: flex;
     align-items: center;
     justify-content: center;
     width: 100%; /* Ocupa 50% da largura da janela (viewport) */
@@ -32,6 +38,7 @@
     
     height: auto; /* A altura se ajusta automaticamente */
     overflow: hidden; /* Evita que o conteúdo extra da imagem apareça */
+    object-fit: cover; // Garante que preencha bem o espaço
 }
 
 .form-group {
@@ -49,8 +56,8 @@
     input {
         padding: 12px;
         border-radius: 8px;
-        //border: 1px solid #ccc; como estava antes, um cinza
         border: 1px solid vars.$primary-color;
+        font-size: 16px;
     }
 
     small {
@@ -63,14 +70,19 @@
     justify-content: center;
     align-items: center;
 }
-.btn-voltar {
-    background: #7cead3;
+.btn-voltar,
+.btn-login {
+    background: vars.$secondary-color;
     border: none;
     padding: 6px 14px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 14px;
+    color: vars.$primary-color;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }
+
 .login-link {
     font-size: 12px;
     color: #6c63ff;
@@ -78,14 +90,15 @@
 }
 
 h1 {
-    color: vars.$third-color;
-    margin-bottom: 0;
-    font-size: 25px;
-    text-align: center;
+    justify-self: center;
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: vars.$primary-color;;
 }
 h3 {
     margin: 10px 0 12px; //aproxima do h1
-    color: #4a148c;
+    color: vars.$primary-color;
     font-size: 16px;
 }
 .btn-cadastrar {
@@ -102,16 +115,29 @@ h3 {
 }
 .footer-text {
     text-align: center;
-    color: vars.$third-color;
+    color: vars.$primary-color;
     margin-top: 16px;
     font-size: 16px;
 }
 .footer-text a {
-    color: vars.$third-color;
+    color: vars.$primary-color;
     cursor: pointer;
     font-weight: 600;
 }
 
 .checkbox-termos {
-    color: vars.$third-color;
+    color: vars.$primary-color;
+}
+
+@media (max-width: 600px) {
+    .topo {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center;
+    }
+
+    .btn-voltar,
+    .btn-login {
+    justify-self: center;
+    }
 }

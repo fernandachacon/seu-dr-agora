@@ -49,4 +49,10 @@ export class Form {
     // depois conecta no backend
     this.router.navigate(['/login']);
   }
+  voltar() {
+    this.router.navigate(['/home']);
+  }
+  login() {
+    this.router.navigate(['/login']);
+  }
 }
