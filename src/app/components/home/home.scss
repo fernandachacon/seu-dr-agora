@@ -11,6 +11,7 @@ main{
     gap: 10px;
     font-family: 'Inter', sans-serif;
     background-color: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
 
     // Espaço entre o conteúdo final e o footer
     padding-bottom: $footer-gap;
@@ -27,12 +28,15 @@ main{
 // Banner Responsivo
 .banner {
     width: 100%;
-    max-width: 100%;
     height: auto; // Mantém a proporção
+    max-height: 500px;
     display: block;
     object-fit: cover; // Garante que preencha bem o espaço
 }
 
+.container {
+    padding: 0 16px;
+}
 
 .cta-section {
     display: flex;
@@ -60,8 +64,10 @@ main{
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+
+    /* padrão desktop grande */
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .card {
@@ -156,8 +162,10 @@ main{
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 32px;
+
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
 }
 
 .step-card {
@@ -171,7 +179,8 @@ main{
     align-items: center;
     justify-content: center;
 
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     min-height: 296px;
 }
 
@@ -208,18 +217,6 @@ main{
     }
 }
 
-@media (max-width: 1024px) {
-    .steps {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .steps {
-        grid-template-columns: 1fr;
-    }
-}
-
 .diferenciais {
     text-align: center;
     padding-top: 48px;
@@ -232,11 +229,12 @@ main{
     }
 
     &__grid {
-    display: flex;
-    gap: 14px;
+    display: grid;
+    gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    
+    grid-template-columns: repeat(6, 1fr);
     }
 }
 
@@ -248,7 +246,9 @@ main{
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    width: 190px;
+    width: 100%;
+    max-width: 190px;
+    margin: 0 auto;
     height: 250px;
     background-color: rgba(255, 255, 255, 0.7);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -372,3 +372,107 @@ main{
 .faq * {
     pointer-events: auto !important;
 }
+
+/* ===== RESPONSIVIDADE DOS CARDS ===== */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 1024px) {
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .diferenciais__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        padding: 24px 20px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-subtitle {
+        font-size: 16px;
+    }
+
+    .card-price {
+        font-size: 40px;
+    }
+
+    .card-features li {
+        font-size: 16px;
+    }
+
+    .card .btn {
+        font-size: 16px;
+        height: 44px;
+    }
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .diferenciais__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .diferencial-card {
+        width: 100%;
+        height: auto;
+        padding: 24px 16px;
+    }
+
+    .diferencial-card img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .diferencial-card p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        height: 60vh;        // ocupa 60% da altura da tela
+        min-height: 360px;   // garante impacto visual
+        object-fit: cover;  // corta sem distorcer
+    }
+}
+@media (max-width: 480px) {
+    .banner {
+        height: 70vh;
+    }
+}
+@media (max-width: 768px) {
+    .main-section {
+        padding-bottom: 24px;
+    }
+    .step-card {
+        padding: 40px 20px;
+        min-height: 240px;
+    }
+
+    .step-card p {
+        font-size: 22px;
+    }
+}
+
+
+

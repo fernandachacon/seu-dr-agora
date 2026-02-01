@@ -5,7 +5,21 @@
         <div class="headline">
 
         </div>
-        <img ngSrc="/images/banner-home.png" alt="" width="1695" height="500" class="banner">
+        <picture>
+            <source 
+                media="(max-width: 768px)" 
+                srcset="/images/banner-mobile.jpeg"
+            />
+
+            <img
+                ngSrc="/images/banner-home-principal.png"
+                alt="Banner principal"
+                width="1695"
+                height="500"
+                class="banner"
+            />
+        </picture>
+
     </section>
 
     <section id="areas" class="specialties">

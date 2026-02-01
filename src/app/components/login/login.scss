@@ -98,3 +98,52 @@ form {
         cursor: pointer;
     }
 }
+
+/* =========================
+    RESPONSIVIDADE - LOGIN
+   ========================= */
+
+/* Tablets e desktop */
+    @media (min-width: 768px) {
+    .content-container {
+        max-width: 520px;
+        padding: 48px 40px;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .login-main {
+        align-items: flex-start;
+        padding-top: 32px;
+    }
+
+    .content-container {
+        padding: 24px 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .btn-entrar {
+        font-size: 15px;
+        padding: 14px;
+    }
+}

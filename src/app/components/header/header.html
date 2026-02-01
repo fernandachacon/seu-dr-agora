@@ -5,16 +5,24 @@
       <!-- logo aqui -->
     </div>
 
-    <nav class="menu">
-      <a href="#inicio">INÍCIO</a>
-      <a href="#areas">ÁREAS DE ATUAÇÃO</a>
-      <a href="#como-agendar">COMO AGENDAR SUA CONSULTA</a>
-      <a href="#diferenciais">NOSSOS DIFERENCIAIS</a>
-      <a href="#duvidas">DÚVIDAS</a>
+    <!-- Botão hamburguer (só mobile) -->
+    <button class="menu-toggle" (click)="menuAberto = !menuAberto">
+      ☰
+    </button>
+
+    <nav class="menu" [class.aberto]="menuAberto">
+      <a href="#inicio" (click)="fecharMenu()">INÍCIO</a>
+      <a href="#areas" (click)="fecharMenu()">ÁREAS DE ATUAÇÃO</a>
+      <a href="#como-agendar" (click)="fecharMenu()">COMO AGENDAR</a>
+      <a href="#diferenciais" (click)="fecharMenu()">DIFERENCIAIS</a>
+      <a href="#duvidas" (click)="fecharMenu()">DÚVIDAS</a>
     </nav>
 
-    <section class="cta-section">
-      <btn-primary btn-text="MARCAR CONSULTA" (click)="irParaCadastro()"></btn-primary>
+    <section class="cta-section desktop-only">
+      <btn-primary
+        btn-text="MARCAR CONSULTA"
+        (click)="irParaCadastro()">
+      </btn-primary>
     </section>
 
   </div>

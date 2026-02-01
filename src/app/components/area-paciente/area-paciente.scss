@@ -1,44 +1,118 @@
 @use 'color-variables' as vars;
-@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
-@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap";
+
+/* =========================
+    BASE
+========================= */
 
 .main {
     margin: 0;
-    min-width: 320px; /* Mínimo para telas de celular */
-    min-height: 100vh; /* Altura da tela */
+    min-width: 320px;
+    min-height: 100vh;
 }
+
+/* =========================
+    TOPBAR
+========================= */
 
 .topbar {
-    height: 70px;
-    padding: 0px 360px;
+    height: 64px;
     background: linear-gradient(90deg, #480A60);
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    justify-content: space-between;
     color: white;
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
 }
 
-.menu span {
-    margin-right: 24px;
-    cursor: pointer;
+    .topbar-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px; // mobile
+}
+
+    .menu {
+    display: flex;
+    gap: 16px;
+
+    span {
+        cursor: pointer;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 }
 
 .usuario {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: #eee;
 }
 
-.conteudo {
-    padding: 50px 360px; //Espaco entre o header e o conteudo
+.nome {
+    font-size: 14px;
 }
+
+/* =========================
+    CONTEÚDO
+========================= */
+
+.conteudo {
+  padding: 24px 16px; // ✅ MOBILE FIRST
+}
+
+/* =========================
+    TABLET
+========================= */
+
+@media (min-width: 768px) {
+    .conteudo {
+        padding: 40px 32px;
+    }
+}
+
+/* =========================
+    DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+    .topbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .menu span {
+        font-size: 16px;
+    }
+
+    .nome {
+        font-size: 15px;
+    }
+
+    .conteudo {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 24px; // padding elegante, sem quebrar
+    }
+}
+
+/* =========================
+    MOBILE PEQUENO
+========================= */
+
+@media (max-width: 480px) {
+    .nome {
+        font-size: 12px;
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
