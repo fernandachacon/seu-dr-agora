@@ -1,31 +1,31 @@
 <main class="main">
     <section class="pix-container">
-    <img
-        src="/images/pix-logo.svg"
-        alt="Pix"
-        class="pix-logo"
-    />
+        <img
+            src="/images/pix-logo.svg"
+            alt="Pix"
+            class="pix-logo"
+        />
 
-    <img
-        src="/images/qrcode-pix.png"
-        alt="QR Code Pix"
-        class="pix-qrcode"
-    />
+        <img
+            src="/images/qrcode-pix.png"
+            alt="QR Code Pix"
+            class="pix-qrcode"
+        />
 
-    <p class="valor">
-        Valor <strong>R$ {{ valor | number:'1.2-2' }}</strong>
-    </p>
+        <p class="valor">
+            Valor <strong>R$ {{ valor | number:'1.2-2' }}</strong>
+        </p>
 
-    <button class="btn-primario" (click)="copiarCodigo()">
-        Copiar código
-    </button>
+        <button class="btn" (click)="copiarCodigo()">
+            Copiar código
+        </button>
 
-    <p class="tempo">
-        Você tem {{ tempoRestante }} para efetuar o pagamento
-    </p>
+        <p class="tempo">
+            Você tem {{ tempoRestante }} para efetuar o pagamento
+        </p>
 
-    <button class="btn-voltar" (click)="voltar()">
-        Voltar
-    </button>
+        <button class="btn btn-secundario" (click)="voltar()">
+            Voltar
+        </button>
     </section>
 </main>

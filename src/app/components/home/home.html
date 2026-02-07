@@ -5,7 +5,21 @@
         <div class="headline">
 
         </div>
-        <img ngSrc="/images/banner-home.png" alt="" width="1695" height="500" class="banner">
+        <picture>
+            <source 
+                media="(max-width: 768px)" 
+                srcset="/images/banner-mobile.jpeg"
+            />
+
+            <img
+                ngSrc="/images/banner-home-principal.png"
+                alt="Banner principal"
+                width="1695"
+                height="500"
+                class="banner"
+            />
+        </picture>
+
     </section>
 
     <section id="areas" class="specialties">
@@ -97,13 +111,13 @@
                     <div class="card-price">R$ 69</div>
 
                     <ul class="card-features">
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
-                    <li>Lore impsum</li>
+                    <li>Acompanhamento psicoterapêutico</li>
+                    <li>Orientação psicológica baseada em evidências</li>
+                    <li>Ansiedade, estresse e transtornos de pânico</li>
+                    <li>Transtornos depressivos</li>
+                    <li>Alterações do humor</li>
+                    <li>Dificuldades relacionadas ao sono</li>
+                    <li>Regulação emocional e manejo do estresse</li>
                     </ul>
 
                     <button class="btn secondary">Marcar Consulta</button>
