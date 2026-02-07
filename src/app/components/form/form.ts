@@ -22,7 +22,6 @@ import { PatientService } from '../../services/patient.service';
 })
 export class Form {
   etapa = 1;
-
   form: FormGroup;
 
   constructor(
@@ -57,54 +56,60 @@ export class Form {
     }
 
     const payload = {
-    name: this.form.value.nome,
-    cpf: this.form.value.cpf,
-    email: this.form.value.email,
-    mobileNumber: this.formatPhone(this.form.value.celular),
-    birthDate: this.formatDateToApi(this.form.value.data),
-    gender: this.formatGender(this.form.value.gender),
+      cpf: this.form.value.cpf,
+      email: this.form.value.email,
+      senha: this.form.value.senha,
 
-    address: {
-    address: this.form.value.rua,
-    number: this.form.value.numero,
-    complement: this.form.value.complemento,
-    neighborhood: this.form.value.bairro,
-    city: this.form.value.cidade,
-    state: this.form.value.estado,
-    country: this.form.value.pais || 'Brasil', // se quiser padrão
-    zipcode: this.form.value.cep
+      patientData: {
+        name: this.form.value.nome,
+        cpf: this.form.value.cpf,
+        email: this.form.value.email,
+        mobileNumber: this.formatPhone(this.form.value.celular),
+        birthDate: this.formatDateToApi(this.form.value.data),
+        gender: this.formatGender(this.form.value.genero),
+
+        address: {
+          address: this.form.value.rua,
+          number: this.form.value.numero,
+          complement: this.form.value.complemento,
+          neighborhood: this.form.value.bairro,
+          city: this.form.value.cidade,
+          state: this.form.value.estado,
+          zipcode: this.form.value.cep,
+          country: 'Brasil'
+        }
+      }
+    };
+
+    console.log('📦 Payload enviado:', payload);
+
+    this.patientService.createPatient(payload).subscribe({
+      next: res => {
+        console.log('✅ Cadastro completo', res);
+        this.router.navigate(['/login']);
+      },
+      error: err => {
+        console.error('❌ Erro da API', err);
+        alert(err.error?.details?.message || 'Erro ao cadastrar');
+      }
+    });
   }
-    
 
-  };
+  // ------------------------
+  // Helpers
+  // ------------------------
 
-  console.log('Payload enviado:', payload);
-
-  this.patientService.createPatient(payload).subscribe({
-    next: res => {
-      console.log('Paciente criado com sucesso', res);
-      this.router.navigate(['/login']);
-    },
-    error: err => {
-      console.error('Erro da API', err);
-    }
-  });
-
-    // depois conecta no backend
-    this.router.navigate(['/login']);
-  }
-
-  // Função para formatar a data no padrão DDMMYYYY
   private formatDateToApi(date: Date | string): string {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0'); // meses começam do 0
+    const month = String(d.getMonth() + 1).padStart(2, '0');
     const year = d.getFullYear();
     return `${day}${month}${year}`;
   }
-  private formatGender(gender: string | undefined | null): string {
-    if (!gender) return 'I'; // se não houver valor, assume "Indefinido"
-    
+
+  private formatGender(gender: string | null | undefined): string {
+    if (!gender) return 'I';
+
     switch (gender.toLowerCase()) {
       case 'masculino':
       case 'm':
@@ -113,29 +118,28 @@ export class Form {
       case 'f':
         return 'F';
       default:
-        return 'I'; // qualquer outro valor → 'Indefinido'
+        return 'I';
     }
   }
-  private formatPhone(phone: string | undefined | null): string {
+
+  private formatPhone(phone: string | null | undefined): string {
     if (!phone) {
-      throw new Error("Telefone obrigatório"); // ou retornar null e tratar depois
+      throw new Error('Telefone obrigatório');
     }
 
-    // Remove tudo que não for número
     const digits = phone.replace(/\D/g, '');
 
-    // Verifica se tem ao menos 10 ou 11 dígitos (DDD + número)
     if (digits.length < 10 || digits.length > 11) {
-      throw new Error("Telefone inválido, formato correto: 11999999999");
+      throw new Error('Telefone inválido. Use DDD + número');
     }
 
     return digits;
   }
 
-
   voltar() {
     this.router.navigate(['/home']);
   }
+
   login() {
     this.router.navigate(['/login']);
   }
