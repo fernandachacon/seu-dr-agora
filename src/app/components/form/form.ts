@@ -6,6 +6,8 @@ import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { NgOptimizedImage } from '@angular/common';
 import { PatientService } from '../../services/patient.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-form',
@@ -24,11 +26,13 @@ export class Form {
   etapa = 1;
 
   form: FormGroup;
+  enviando = false;
 
   constructor(
     private fb: FormBuilder,
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
@@ -38,73 +42,143 @@ export class Form {
       data: ['', Validators.required],
       cep: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
+      senha: [
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/)
+        ]
+      ],
       confirmarSenha: ['', Validators.required],
-      termos: [false, Validators.requiredTrue],
+      terms: [false, Validators.requiredTrue],
+
       rua: ['', Validators.required],
       numero: ['', Validators.required],
-      complemento: ['', Validators.required],
+      complemento: [''],
       bairro: ['', Validators.required],
       cidade: ['', Validators.required],
       estado: ['', Validators.required]
-    });
+    }, 
+    { validators: this.senhasIguais }
+  );
+  }
+/* =========================
+  🔐 VALIDAÇÃO SENHAS IGUAIS
+  ========================= */
+  private senhasIguais(group: FormGroup) {
+    const senha = group.get('senha')?.value;
+    const confirmar = group.get('confirmarSenha')?.value;
+
+    if (!senha || !confirmar) return null;
+
+    return senha === confirmar ? null : { senhasDiferentes: true };
+  }
+/* =========================
+🔍 BUSCA CEP (ViaCEP)
+========================= */
+  buscarCep(): void {
+    const cep = this.form.get('cep')?.value;
+
+    if (!cep) return;
+
+    const cepLimpo = cep.replace(/\D/g, '');
+
+    if (cepLimpo.length !== 8) return;
+
+    this.http
+      .get<any>(`https://viacep.com.br/ws/${cepLimpo}/json/`)
+      .subscribe({
+        next: (res) => {
+          if (res.erro) {
+            console.warn('CEP não encontrado');
+            return;
+          }
+
+          this.form.patchValue({
+            rua: res.logradouro,
+            bairro: res.bairro,
+            cidade: res.localidade,
+            estado: res.uf
+          });
+        },
+        error: (err) => {
+          console.error('Erro ao buscar CEP', err);
+        }
+      });
   }
 
+// =========================
+// 👁️ VISIBILIDADE DA SENHA
+// =========================
+mostrarSenha = false;
+mostrarConfirmarSenha = false;
+
+toggleSenha() {
+  this.mostrarSenha = !this.mostrarSenha;
+}
+
+toggleConfirmarSenha() {
+  this.mostrarConfirmarSenha = !this.mostrarConfirmarSenha;
+}
+
+/* =========================
+📤 SUBMIT
+========================= */
   submit(): void {
-    if (this.form.invalid) {
+    if (this.form.invalid || this.enviando) {
       this.form.markAllAsTouched();
       return;
     }
+    this.enviando = true;
 
     const payload = {
-    name: this.form.value.nome,
-    cpf: this.form.value.cpf,
-    email: this.form.value.email,
-    mobileNumber: this.formatPhone(this.form.value.celular),
-    birthDate: this.formatDateToApi(this.form.value.data),
-    gender: this.formatGender(this.form.value.gender),
+      name: this.form.value.nome,
+      cpf: this.form.value.cpf,
+      email: this.form.value.email,
+      mobileNumber: this.formatPhone(this.form.value.celular),
+      birthDate: this.formatDateToApi(this.form.value.data),
+      gender: this.formatGender(this.form.value.genero),
 
-    address: {
-    address: this.form.value.rua,
-    number: this.form.value.numero,
-    complement: this.form.value.complemento,
-    neighborhood: this.form.value.bairro,
-    city: this.form.value.cidade,
-    state: this.form.value.estado,
-    country: this.form.value.pais || 'Brasil', // se quiser padrão
-    zipcode: this.form.value.cep
-  }
-    
+      address: {
+        address: this.form.value.rua,
+        number: this.form.value.numero,
+        complement: this.form.value.complemento,
+        neighborhood: this.form.value.bairro,
+        city: this.form.value.cidade,
+        state: this.form.value.estado,
+        country: 'Brasil',
+        zipcode: this.form.value.cep
+      }
+    };
 
-  };
+    console.log('Payload enviado:', payload);
 
-  console.log('Payload enviado:', payload);
-
-  this.patientService.createPatient(payload).subscribe({
-    next: res => {
-      console.log('Paciente criado com sucesso', res);
-      this.router.navigate(['/login']);
-    },
-    error: err => {
-      console.error('Erro da API', err);
-    }
-  });
-
-    // depois conecta no backend
-    this.router.navigate(['/login']);
+    this.patientService.createPatient(payload).subscribe({
+      next: (res) => {
+        console.log('Paciente criado com sucesso', res);
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error('Erro da API', err);
+      }
+    });
   }
 
-  // Função para formatar a data no padrão DDMMYYYY
+  /* =========================
+🔧 HELPERS
+========================= */
   private formatDateToApi(date: Date | string): string {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0'); // meses começam do 0
+    const month = String(d.getMonth() + 1).padStart(2, '0');
     const year = d.getFullYear();
     return `${day}${month}${year}`;
   }
-  private formatGender(gender: string | undefined | null): string {
-    if (!gender) return 'I'; // se não houver valor, assume "Indefinido"
-    
+
+  private formatGender(gender: string | null | undefined): string {
+    if (!gender) return 'I';
+
     switch (gender.toLowerCase()) {
       case 'masculino':
       case 'm':
@@ -113,29 +187,30 @@ export class Form {
       case 'f':
         return 'F';
       default:
-        return 'I'; // qualquer outro valor → 'Indefinido'
+        return 'I';
     }
   }
-  private formatPhone(phone: string | undefined | null): string {
+
+  private formatPhone(phone: string | null | undefined): string {
     if (!phone) {
-      throw new Error("Telefone obrigatório"); // ou retornar null e tratar depois
+      throw new Error('Telefone obrigatório');
     }
 
-    // Remove tudo que não for número
     const digits = phone.replace(/\D/g, '');
 
-    // Verifica se tem ao menos 10 ou 11 dígitos (DDD + número)
     if (digits.length < 10 || digits.length > 11) {
-      throw new Error("Telefone inválido, formato correto: 11999999999");
+      throw new Error('Telefone inválido');
     }
 
     return digits;
   }
-
-
+/* =========================
+🔙 NAVEGAÇÃO
+========================= */
   voltar() {
     this.router.navigate(['/home']);
   }
+
   login() {
     this.router.navigate(['/login']);
   }

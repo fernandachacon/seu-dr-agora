@@ -13,4 +13,8 @@ import { Home } from './components/home/home';  //adicionei depois
 
 export class App {
   protected readonly title = signal('SEU_DR_AGORA');
+  
+  marcarConsulta() {
+    window.open('https://wa.me/5599999999999', '_blank');
+  }
 }

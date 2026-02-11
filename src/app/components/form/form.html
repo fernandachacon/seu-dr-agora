@@ -1,124 +1,223 @@
 <app-header></app-header>
+
 <main>
-<div class="page-container">
-    <div class="content-container">
+    <div class="page-container">
+        <div class="content-container">
+
+        <!-- TOPO -->
         <div class="topo">
-            <button class="btn-voltar" (click)="voltar()">
-                Voltar
-            </button>
+            <button class="btn-voltar" (click)="voltar()">Voltar</button>
             <h1>Crie sua conta</h1>
-            <button class="btn-login" (click)="login()">
-                Já tenho conta
-            </button>
+            <button class="btn-login" (click)="login()">Já tenho conta</button>
         </div>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <h3>Informações Pessoais</h3>
-        <div class="form-group">
-            <label for="nome">Nome completo*</label>
-            <input type="text" id="nome" formControlName="nome" />
-            <small *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')">
-                Nome é obrigatório
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="cpf">CPF*</label>
-            <input type="text" id="cpf" formControlName="cpf" maxlength="14" placeholder="Ex: 123.456.789-00" />
-            <small *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')">
-                CPF é obrigatório
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="celular">Celular*</label>
-            <input type="tel" id="celular" formControlName="celular" placeholder="(00) 90000-0000" />
-            <small *ngIf="form.get('nome')?.touched && form.get('nome')?.hasError('required')">
-                Celular é obrigatório
-            </small>
-        </div>
-        <div class="form-group">    
-            <label for="genero">Gênero*</label>
-                <div class="radio-group">
-                    <label>
-                    <input type="radio" formControlName="genero" value="FEMININO" /> Feminino
-                    </label>
-                    <label>
-                    <input type="radio" formControlName="genero" value="MASCULINO" /> Masculino
-                    </label>
-                    <label>
-                    <input type="radio" formControlName="genero" value="NAO_BINARIO" /> Não-binário
-                    </label>
-                    <label>
-                    <input type="radio" formControlName="genero" value="NAO_RESPONDER" /> Prefiro não responder
-                    </label>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+            <!-- BLOCO: INFORMAÇÕES PESSOAIS -->
+            <section class="form-block">
+            <h3>Informações pessoais</h3>
+
+            <div class="form-group">
+                <label>Nome completo*</label>
+                <input type="text" formControlName="nome" />
+                <small *ngIf="form.get('nome')?.touched && form.get('nome')?.invalid">
+                Informe seu nome completo
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>CPF*</label>
+                <input type="text" formControlName="cpf" placeholder="123.456.789-00" />
+                <small *ngIf="form.get('cpf')?.touched && form.get('cpf')?.invalid">
+                Informe um CPF válido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>Celular*</label>
+                <input type="tel" formControlName="celular" placeholder="(00) 90000-0000" />
+                <small *ngIf="form.get('celular')?.touched && form.get('celular')?.invalid">
+                Informe seu número de celular
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>Gênero*</label>
+                <select formControlName="genero">
+                <option value="">Selecione</option>
+                <option value="FEMININO">Feminino</option>
+                <option value="MASCULINO">Masculino</option>
+                <option value="NAO_BINARIO">Não-binário</option>
+                <option value="NAO_RESPONDER">Prefiro não responder</option>
+                </select>
+                <small *ngIf="form.get('genero')?.touched && form.get('genero')?.invalid">
+                Selecione uma opção
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>Data de nascimento*</label>
+                <input type="date" formControlName="data" />
+            </div>
+            </section>
+
+            <!-- BLOCO: ENDEREÇO -->
+            <section class="form-block">
+            <h3>Endereço</h3>
+
+            <div class="form-group campo cep">
+                <label>CEP*</label>
+                <div class="cep-wrapper">
+                <input type="text" formControlName="cep" placeholder="00000-000" (blur)="buscarCep()" />
+                <button type="button" class="btn-cep" (click)="buscarCep()">Buscar</button>
                 </div>
-        </div>
-        <div class="form-group">
-            <label for="data-nascimento">Data de nascimento*</label>
-            <input type="date" id="data-nascimento" formControlName="data"/>
-        </div>
-        <div class="form-group"> 
-            <label for="cep" >CEP*</label>
-            <input type="text" id="cep" maxlength="9" placeholder="Ex: 12345-789" formControlName="cep"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="rua">Endereço*</label>
-            <input type="text" id="rua" formControlName="rua"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="numero">Número*</label>
-            <input type="text" id="numero" formControlName="numero"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="complemento">Complemento*</label>
-            <input type="text" id="complemento" formControlName="complemento"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="bairro">Bairro*</label>
-            <input type="text" id="bairro" formControlName="bairro"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="cidade">Cidade*</label>
-            <input type="text" id="cidade" formControlName="cidade"/>
-        </div> 
-        <div class="form-group"> 
-            <label for="estado">Estado*</label>
-            <input type="text" id="estado" formControlName="estado"/>
-        </div> 
-        <h3>Dados da conta</h3>
-        <div class="form-group">
-            <label for="email">E-mail*</label>
-            <input type="email" id="email" formControlName="email" />
-            <small *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">
-                E-mail inválido
+            </div>
+
+            <div class="form-group">
+                <label>Endereço*</label>
+                <input type="text" formControlName="rua" />
+            </div>
+
+            <div class="form-group">
+                <label>Número*</label>
+                <input type="text" formControlName="numero" />
+            </div>
+
+            <div class="form-group">
+                <label>Complemento</label>
+                <input type="text" formControlName="complemento" />
+            </div>
+
+            <div class="form-group">
+                <label>Bairro*</label>
+                <input type="text" formControlName="bairro" />
+            </div>
+
+            <div class="form-group">
+                <label>Cidade*</label>
+                <input type="text" formControlName="cidade" />
+            </div>
+
+            <div class="form-group">
+                <label>Estado*</label>
+                <input type="text" formControlName="estado" />
+            </div>
+        </section>
+
+        <!-- BLOCO: CONTA -->
+        <section class="form-block">
+            <h3>Dados da conta</h3>
+
+            <div class="form-group">
+                <label>E-mail*</label>
+                <input type="email" formControlName="email" autocomplete="email"/>
+                <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+                    Informe um e-mail válido
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>Senha*</label>
+
+                <div class="input-password">
+                    <input
+                    [type]="mostrarSenha ? 'text' : 'password'"
+                    formControlName="senha"
+                    autocomplete="new-password"
+                    />
+
+                    <button
+                    type="button"
+                    class="btn-eye"
+                    (click)="toggleSenha()"
+                    aria-label="Mostrar senha"
+                    >
+                    👁️
+                    </button>
+                </div>
+                <small
+                *ngIf="form.get('senha')?.touched && form.get('senha')?.invalid">
+                    A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula,
+                número e símbolo.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label>Confirme sua senha*</label>
+
+                <div class="input-password">
+                    <input
+                    [type]="mostrarConfirmarSenha ? 'text' : 'password'"
+                    formControlName="confirmarSenha"
+                    (paste)="$event.preventDefault()"
+                    />
+
+                    <button
+                    type="button"
+                    class="btn-eye"
+                    (click)="toggleConfirmarSenha()"
+                    aria-label="Mostrar senha"
+                    >
+                    👁️
+                    </button>
+                </div>
+                <small
+                *ngIf="form.hasError('senhasDiferentes') && form.get('confirmarSenha')?.touched">
+                As senhas não coincidem
+                </small>
+            </div>
+        </section>
+
+        <!-- TERMOS -->
+        <div class="terms-container">
+            <label class="terms-label">
+                <input type="checkbox" formControlName="terms" />
+                <span>
+                Li e concordo com os
+                <a href="#" target="_blank">Termos e Condições</a>
+                </span>
+            </label>
+            <small
+                *ngIf="form.get('terms')?.touched && form.get('terms')?.invalid"
+                class="terms-error"
+            >
+                Você precisa aceitar os termos para continuar
             </small>
         </div>
-        <div class="form-group">
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" formControlName="senha" />
-        </div>
 
-        <div class="form-group">
-            <label for="confirmar-senha">Confirme sua senha*</label>
-            <input type="password" id="confirmar-senha" formControlName="confirmarSenha"/>
-        </div>    
 
-        <div class="checkbox-section">
-            <input type="checkbox" id="checkbox-termos" formControlName="termos" />
-            <label class= "checkbox-termos" for="checkbox-termos"> Li e concordo com os<a href="/#/terms" target="_blank"> Termos e Condições de Uso da Plataforma de Saúde</a>
-            </label>
-        </div>
-        <button type="submit" class="btn-cadastrar">Cadastrar</button>
-        <p class="footer-text"> Já possui uma conta? <a>Entrar</a> </p>
-    </form>
+        <!-- CTA -->
+        <button 
+            type="submit" 
+            class="btn-cadastrar" 
+            [disabled]="form.invalid || enviando">
+            <ng-container *ngIf="!enviando; else carregando">
+                Cadastrar
+            </ng-container>
+            <ng-template #carregando>
+                Enviando...
+            </ng-template>
+        </button>
+        <p class="microtexto">Seus dados estão protegidos e não serão compartilhados.</p>
+
+        <p class="login-link">
+            Já possui uma conta?
+            <a routerLink="/login">Entrar</a>
+        </p>
+        
+        </form>
     </div>
-    <!-- BANNER -->
+
+    <!-- IMAGEM -->
     <div class="image-container">
         <img
-            ngSrc="/images/plataforma-segura.png"
-            width="840"
-            height="1150"
-            alt="Plataforma segura"
+        ngSrc="/images/img_form.png"
+        width="960"
+        height="1080"
+        alt="Plataforma segura"
         />
     </div>
-</div>
+    </div>
 </main>
+
 <app-footer></app-footer>
