@@ -24,7 +24,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Form {
   etapa = 1;
-
   form: FormGroup;
   enviando = false;
 
@@ -133,34 +132,41 @@ toggleConfirmarSenha() {
     this.enviando = true;
 
     const payload = {
-      name: this.form.value.nome,
       cpf: this.form.value.cpf,
       email: this.form.value.email,
-      mobileNumber: this.formatPhone(this.form.value.celular),
-      birthDate: this.formatDateToApi(this.form.value.data),
-      gender: this.formatGender(this.form.value.genero),
+      senha: this.form.value.senha,
 
-      address: {
-        address: this.form.value.rua,
-        number: this.form.value.numero,
-        complement: this.form.value.complemento,
-        neighborhood: this.form.value.bairro,
-        city: this.form.value.cidade,
-        state: this.form.value.estado,
-        country: 'Brasil',
-        zipcode: this.form.value.cep
+      patientData: {
+        name: this.form.value.nome,
+        cpf: this.form.value.cpf,
+        email: this.form.value.email,
+        mobileNumber: this.formatPhone(this.form.value.celular),
+        birthDate: this.formatDateToApi(this.form.value.data),
+        gender: this.formatGender(this.form.value.genero),
+
+        address: {
+          address: this.form.value.rua,
+          number: this.form.value.numero,
+          complement: this.form.value.complemento,
+          neighborhood: this.form.value.bairro,
+          city: this.form.value.cidade,
+          state: this.form.value.estado,
+          zipcode: this.form.value.cep,
+          country: 'Brasil'
+        }
       }
     };
 
-    console.log('Payload enviado:', payload);
+    console.log('📦 Payload enviado:', payload);
 
     this.patientService.createPatient(payload).subscribe({
-      next: (res) => {
-        console.log('Paciente criado com sucesso', res);
+      next: res => {
+        console.log('✅ Cadastro completo', res);
         this.router.navigate(['/login']);
       },
-      error: (err) => {
-        console.error('Erro da API', err);
+      error: err => {
+        console.error('❌ Erro da API', err);
+        alert(err.error?.details?.message || 'Erro ao cadastrar');
       }
     });
   }
@@ -199,7 +205,7 @@ toggleConfirmarSenha() {
     const digits = phone.replace(/\D/g, '');
 
     if (digits.length < 10 || digits.length > 11) {
-      throw new Error('Telefone inválido');
+      throw new Error('Telefone inválido. Use DDD + número');
     }
 
     return digits;
