@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,38 +25,38 @@ export class Login {
   errorMessage = '';
 
   constructor(
-    private fb: FormBuilder,
-    private router: Router
-  ) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+  private fb: FormBuilder,
+  private router: Router,
+  private authService: AuthService
+) {
+  this.loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    senha: ['', [Validators.required, Validators.minLength(6)]],
+  });
+}
   submit(): void {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      return;
-    }
-
-    const { email, senha } = this.loginForm.value;
-
-    this.loading = true;
-    this.errorMessage = '';
-
-    // 🔒 Simulação de login (depois você troca pelo backend)
-    setTimeout(() => {
-      if (email === 'teste@email.com' && senha === '123456') {
-
-        // Aqui você pode salvar token, user, etc
-        localStorage.setItem('auth', 'true');
-
-        this.router.navigate(['/area-paciente']);
-      } else {
-        this.errorMessage = 'Email ou senha inválidos';
-      }
-
-      this.loading = false;
-    }, 1000);
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
+    return;
   }
+
+  const { email, senha } = this.loginForm.value;
+
+  this.loading = true;
+  this.errorMessage = '';
+
+  this.authService.login(email, senha).subscribe({
+    next: () => {
+      this.router.navigate(['/area-paciente']);
+    },
+    error: (err) => {
+      this.errorMessage =
+        err.error?.error || 'Email ou senha inválidos';
+      this.loading = false;
+    },
+    complete: () => {
+      this.loading = false;
+    }
+  });
+}
 }

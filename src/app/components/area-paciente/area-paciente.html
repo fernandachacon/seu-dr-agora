@@ -5,9 +5,9 @@
             <span>Prontuário</span>
         </nav>
 
-        <div class="usuario">
+        <div class="usuario" *ngIf="perfil">
             <div class="avatar"></div>
-            <span class="nome">Nome do Paciente</span>
+            <span class="nome">{{ perfil.email }}</span>
         </div>
     </div>
 </header>

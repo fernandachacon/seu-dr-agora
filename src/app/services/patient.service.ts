@@ -12,8 +12,6 @@ export class PatientService {
   constructor(private http: HttpClient) {}
 
   createPatient(data: any): Observable<any> {
-    console.log('📡 URL DO SERVICE:', this.apiUrl);
-    console.log('📦 DATA ENVIADA:', data);
     return this.http.post(this.apiUrl, data);
   }
 }
