@@ -1,13 +1,29 @@
 <header class="topbar">
     <div class="topbar-container">
+        <div class="left">
+            <img
+                ngSrc="/images/LOGO_AREAPACIENTE.png"
+                alt="Logo"
+                width="50"
+                height="50"
+                class="logo"
+            />
+        </div>
+        
         <nav class="menu">
             <span>Painel</span>
             <span>Prontuário</span>
         </nav>
 
-        <div class="usuario" *ngIf="perfil">
+        <div class="usuario">
             <div class="avatar"></div>
             <span class="nome">{{ perfil.email }}</span>
+
+            <div class="logout">
+                <a routerLink="/login">
+                <img src="/images/icon-out-.jpeg" alt="Sair">
+                </a>
+            </div>
         </div>
     </div>
 </header>

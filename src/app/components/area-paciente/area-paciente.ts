@@ -4,14 +4,19 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Footer } from '../footer/footer';
 import { ChangeDetectorRef } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-area-paciente',
   standalone: true,
   imports: [
-    CommonModule,   
-    RouterOutlet,   
-    Footer          
+  
+    CommonModule,
+    RouterOutlet,
+    NgOptimizedImage,
+    Footer
+
   ],
   templateUrl: './area-paciente.html',
   styleUrl: './area-paciente.scss',

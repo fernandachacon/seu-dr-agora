@@ -16,13 +16,13 @@
 ========================= */
 
 .topbar {
-    height: 64px;
+    height: 80px;
     background: linear-gradient(90deg, #480A60);
     color: white;
     font-family: 'Poppins', sans-serif;
 }
 
-    .topbar-container {
+.topbar-container {
     height: 100%;
     display: flex;
     align-items: center;
@@ -30,34 +30,69 @@
     padding: 0 16px; // mobile
 }
 
-    .menu {
+/* Estilização da Logo para ficar igual ao que fizemos antes */
+.logo {
+    height: 60px; 
+    width: auto;
+    display: block;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.menu {
     display: flex;
     gap: 16px;
 
     span {
         cursor: pointer;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
         white-space: nowrap;
     }
+    &:hover {
+            opacity: 0.8;
+        }
 }
 
 .usuario {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #eee;
+    gap: 12px;
+    color: white;
 }
 
 .nome {
-    font-size: 14px;
+    display: block; /* Garante que ele apareça por padrão */
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
 }
 
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eee;
+    border: 2px solid vars.$primary-color;
+}
+
+.logout {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+
+        a img {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.2s ease;
+        }
+
+        a:hover img {
+        transform: scale(1.1);
+        }
+}
 /* =========================
     CONTEÚDO
 ========================= */
@@ -73,6 +108,25 @@
 @media (min-width: 768px) {
     .conteudo {
         padding: 40px 32px;
+    }
+    .topbar {
+        height: 70px; /* Menor no mobile para não ocupar meia tela */
+    }
+    
+    .logo {
+        height: 45px;
+    }
+
+    .nome {
+        display: block; 
+        font-size: 15px;
+    }
+    
+    .menu {
+        gap: 16px;
+        span {
+            font-size: 14px;
+        }
     }
 }
 
@@ -108,11 +162,6 @@
 
 @media (max-width: 480px) {
     .nome {
-        font-size: 12px;
-        max-width: 120px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: none;
     }
 }
-
