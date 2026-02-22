@@ -10,18 +10,22 @@
             />
         </div>
         
-        <nav class="menu">
-            <span>Painel</span>
-            <span>Prontuário</span>
+        <button class="menu-toggle" (click)="menuAberto = !menuAberto">
+            ☰
+        </button>
+
+        <nav class="menu" [class.aberto]="menuAberto">
+            <span (click)="menuAberto = false">Painel</span>
+            <span (click)="menuAberto = false">Prontuário</span>
         </nav>
 
         <div class="usuario">
+            <span class="nome">Nome do Paciente</span>
             <div class="avatar"></div>
-            <span class="nome">{{ perfil.email }}</span>
 
             <div class="logout">
                 <a routerLink="/login">
-                <img src="/images/icon-out-.jpeg" alt="Sair">
+                <img src="/images/logout.png" alt="Sair">
                 </a>
             </div>
         </div>

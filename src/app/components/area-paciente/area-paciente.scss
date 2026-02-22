@@ -20,6 +20,9 @@
     background: linear-gradient(90deg, #480A60);
     color: white;
     font-family: 'Poppins', sans-serif;
+    position: sticky; //foi adc
+    top: 0; //foi adc
+    z-index: 1000; //foi adc
 }
 
 .topbar-container {
@@ -27,16 +30,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px; // mobile
+    padding: 0 16px; // era 0 e 16
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Estilização da Logo para ficar igual ao que fizemos antes */
 .logo {
     height: 60px; 
     width: auto;
-    display: block;
-    cursor: pointer;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .menu {
@@ -55,16 +59,23 @@
         }
 }
 
-.usuario {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.menu-toggle {
+    display: none; // Escondido no desktop
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
     color: white;
 }
 
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
 .nome {
-    display: block; /* Garante que ele apareça por padrão */
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     color: white;
@@ -84,13 +95,14 @@
         margin-top: 8px;
 
         a img {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         transition: transform 0.2s ease;
         }
 
         a:hover img {
         transform: scale(1.1);
+        filter: brightness(1.2); // Feedback visual extra
         }
 }
 /* =========================
@@ -101,34 +113,7 @@
   padding: 24px 16px; // ✅ MOBILE FIRST
 }
 
-/* =========================
-    TABLET
-========================= */
 
-@media (min-width: 768px) {
-    .conteudo {
-        padding: 40px 32px;
-    }
-    .topbar {
-        height: 70px; /* Menor no mobile para não ocupar meia tela */
-    }
-    
-    .logo {
-        height: 45px;
-    }
-
-    .nome {
-        display: block; 
-        font-size: 15px;
-    }
-    
-    .menu {
-        gap: 16px;
-        span {
-            font-size: 14px;
-        }
-    }
-}
 
 /* =========================
     DESKTOP
@@ -157,11 +142,47 @@
 }
 
 /* =========================
-    MOBILE PEQUENO
+    ADAPTAÇÃO RESPONSIVA (COMO O OUTRO HEADER)
 ========================= */
 
-@media (max-width: 480px) {
-    .nome {
-        display: none;
+@media (max-width: 768px) {
+    .topbar {
+        height: 70px;
+    }
+
+    .menu-toggle {
+        display: block; // Aparece no mobile
+        order: 2;
+    }
+
+    .left {
+        order: 1;
+    }
+
+    .usuario {
+        order: 3;
+        .nome { display: none; } // Esconde nome no mobile para não apertar
+    }
+
+    .menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #480A60; // Fundo do menu aberto no mobile
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+        display: none; // Escondido por padrão
+        z-index: 999;
+    }
+
+    .menu.aberto {
+        display: flex; // Mostra quando clicar no toggle
+    }
+
+    .logo {
+        height: 45px;
     }
 }
