@@ -1,45 +1,56 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Footer } from '../footer/footer';
-import { ChangeDetectorRef } from '@angular/core';
+import { filter } from 'rxjs';
+import { NgZone } from '@angular/core';
+
+interface Perfil {
+  id: number;
+  nome: string;
+  email: string;
+}
 
 @Component({
   selector: 'app-area-paciente',
   standalone: true,
-  imports: [
-    CommonModule,   
-    RouterOutlet,   
-    Footer          
-  ],
+  imports: [CommonModule, RouterOutlet, Footer],
   templateUrl: './area-paciente.html',
   styleUrl: './area-paciente.scss',
 })
 export class AreaPaciente implements OnInit {
 
-  perfil: any;
-  isBrowser = false;
+  perfil!: Perfil;
 
   constructor(
     private http: HttpClient,
-    private cdr: ChangeDetectorRef, 
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
+    private router: Router,
+    private zone: NgZone  
+  ) {}
 
   ngOnInit(): void {
+    console.log('AREA PACIENTE INICIADO');
+
     this.buscarPerfil();
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.buscarPerfil();
+      });
   }
 
  buscarPerfil(): void {
-  this.http.get<any>('http://localhost:3000/api/perfil').subscribe({
-    next: res => {
-      this.perfil = res.user; 
-      this.cdr.detectChanges(); 
-    },
-    error: err => console.error('Erro na requisição:', err)
-  });
+  this.http
+    .get<{ user: Perfil }>('http://localhost:3000/api/perfil')
+    .subscribe(res => {
+
+      this.zone.run(() => {
+        this.perfil = res.user;
+        console.log('Perfil final:', this.perfil);
+      });
+
+    });
 }
 }
