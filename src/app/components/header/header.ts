@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { BtnPrimaryComponent } from "../btn-primary/btn-primary";
+import { NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [BtnPrimaryComponent],
+  imports: [
+    BtnPrimaryComponent,
+    NgOptimizedImage
+  ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

@@ -1,143 +1,330 @@
 @use 'color-variables' as vars;
-@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap";
 
-.main {
-    display: flex;
-}
+/* =====================
+BASE
+===================== */
 .page-container {
     display: flex;
     min-height: 100vh;
-    gap: 5px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
 }
 
 .content-container {
-    flex: 0 0 50%;
-    padding: 64px;
+    flex: 0 0 50%; /* Espaco de tela do form/imagem */
+    padding: 64px 96px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-}
-
-.topo {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    column-gap: 100px; // 👈 aumenta o espaço entre botões e o h1
-    margin-bottom: 32px;
 }
 
 .image-container {
-    background-color: #f5f6fa;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Ocupa 50% da largura da janela (viewport) */
-    /* Se quiser 50% do elemento pai, use: width: 50%; */
-    
-    height: auto; /* A altura se ajusta automaticamente */
-    overflow: hidden; /* Evita que o conteúdo extra da imagem apareça */
-    object-fit: cover; // Garante que preencha bem o espaço
-}
-
-.form-group {
+    flex: 1;
+    background-color: vars.$green-color;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-    color: vars.$primary-color;
-
-    label {
-        margin-bottom: 5px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 16px;
-    }
-
-    input {
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid vars.$primary-color;
-        font-size: 16px;
-    }
-
-    small {
-        color: red;
-        margin-top: 4px;
-    }
-    }
-
-.btn {
-    justify-content: center;
-    align-items: center;
+    justify-content: center;   /* Mantém centralizado na horizontal */
+    align-items: flex-start;   /* Alinha ao topo (antes era center) */
+    padding-top: 64px;        /* Alinhando com o topo do form (64px do content-container) */
 }
-.btn-voltar,
-.btn-login {
-    background: vars.$secondary-color;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 14px;
-    color: vars.$primary-color;
+
+.image-container img {
+    width: 100%;       /* Ocupa a largura total do container de 50% */
+    height: auto;      /* Deixa a altura livre para manter a proporção */
+    max-height: calc(100vh - 100px);  /* Garante que se a tela for baixa, a imagem caiba inteira */
+    object-fit: contain; /* Garante que a arte inteira apareça sem cortes */
+    position: sticky; /* Faz a imagem "grudar" ao rolar */
+    top: 100px;       /* Distância que ela para do topo ao rolar */
+}
+
+/* =====================
+FORM
+===================== */
+form {
+    width: 100%;
+    max-width: 720px; /* Largura do form */
+}
+
+.form-block {
+    background: #fff;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.form-block h3 {
+    margin: 0 0 20px;
+    font-size: 18px;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
+    color: vars.$purple-color;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 8px;
 }
 
-.login-link {
-    font-size: 12px;
-    color: #6c63ff;
-    cursor: pointer;
+
+/* =====================
+TOPO
+===================== */
+.topo {
+    width: 100%;
+    max-width: 720px; //mesmo tamanho do form
+    display: flex; //mexe na localizacao dos botoes
+    justify-content: space-between; //mexe na localizacao dos botoes
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    margin-bottom: 32px;
 }
 
 h1 {
-    justify-self: center;
     margin: 0;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 600;
-    color: vars.$primary-color;;
+    color: vars.$purple-color;
+    text-align: center;
 }
-h3 {
-    margin: 10px 0 12px; //aproxima do h1
-    color: vars.$primary-color;
-    font-size: 16px;
+
+.btn-voltar,
+.btn-login {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 18px; //mexe no tamanho da "caixa" dos botoes
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    background: vars.$green-color;
+    color: vars.$purple-color;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
 }
+
+/* =====================
+CAMPOS
+===================== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: vars.$purple-color;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid vars.$purple-color;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+}
+
+/* 🔧 garante que o select (gênero) fique igual aos inputs */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+}
+
+/* =====================
+CEP
+===================== */
+.campo.cep .cep-wrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-cep {
+    padding: 0 18px;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    background: vars.$green-color;
+    color: vars.$purple-color;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* =====================
+ERROS
+===================== */
+small {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #c62828;
+}
+
+/* =====================
+AÇÃO
+===================== */
 .btn-cadastrar {
     width: 100%;
     margin-top: 32px;
-    padding: 12px;
-    background: #4a148c;
+    padding: 14px;
+    background: vars.$purple-color;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
-}
-.footer-text {
-    text-align: center;
-    color: vars.$primary-color;
-    margin-top: 16px;
-    font-size: 16px;
-}
-.footer-text a {
-    color: vars.$primary-color;
     cursor: pointer;
-    font-weight: 600;
 }
 
-.checkbox-termos {
-    color: vars.$primary-color;
+.btn-cadastrar:disabled {
+    background: #c7c7c7;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
-@media (max-width: 600px) {
-    .topo {
-    grid-template-columns: 1fr;
-    gap: 12px;
+.microtexto {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
     text-align: center;
+}
+/* =====================
+TERMOS
+===================== */
+.terms-container {
+    margin: 24px 0;
+}
+
+.terms-label {
+    display: flex;
+    align-items: flex-start; /* 🔧 chave do alinhamento. Era center */
+    gap: 10px;
+    font-size: 14px;
+    color: vars.$purple-color;
+    line-height: 1.5;
+    //max-width: 100%;
+}
+
+.terms-label input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    flex-shrink: 0; // impede o checkbox de esmagar
+    cursor: pointer;
+    margin-top: 4px; // alinha com a primeira linha do texto
+}
+
+.terms-label span {
+    display: inline;
+}
+
+.terms-label a {
+    color: vars.$purple-color;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.terms-error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #c62828;
+}
+
+.login-link {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+
+    a {
+    color: vars.$purple-color;
+    font-weight: 600;
+    margin-left: 4px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        }
+    }
+}
+
+.input-password {
+    position: relative;
+
+    input {
+        width: 100%;
+        padding-right: 44px;
     }
 
-    .btn-voltar,
-    .btn-login {
-    justify-self: center;
+    .btn-eye {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        opacity: 0.6;
+    }
+}
+
+/* =====================
+MOBILE
+===================== */
+/* MOBILE */
+@media (max-width: 480px) {
+    .terms-label {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        display: none;
+    }
+
+    .content-container {
+        flex: 1;
+        padding: 24px 16px;
+    }
+
+    form,
+    .topo {
+        max-width: 100%;
+    }
+
+    .topo {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .campo.cep .cep-wrapper {
+        flex-direction: column;
+    }
+
+    .btn-cep {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-container {
+        flex: 0 0 60%; /* Form ganha mais espaço */
+        padding: 40px 48px; /* Diminui o respiro lateral */
+    }
+    .image-container {
+        flex: 0 0 40%; /* Imagem encolhe um pouco */
     }
 }

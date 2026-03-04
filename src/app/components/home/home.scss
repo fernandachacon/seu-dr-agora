@@ -63,14 +63,39 @@ main{
 }
 
 .cards {
-    display: grid;
+    display: flex;
     gap: 24px;
 
-    /* padrão desktop grande */
-    grid-template-columns: repeat(4, 1fr);
+    overflow-x: auto;
+    padding-bottom: 16px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    /* esconde scrollbar no Chrome/Safari */
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(183, 159, 247, 0.4);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }
 
+
 .card {
+    min-width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
+
+    scroll-snap-align: start;
+
+
     background: white;
     border-radius: 16px;
     padding: 32px 24px;
@@ -137,9 +162,9 @@ main{
     transition: all 0.3s ease;
 
     &:hover {
-      background-color: vars.$primary-color; // fundo roxo
+      background-color: vars.$purple-color; // fundo roxo
       color: white;                           // texto branco
-      border-color: vars.$primary-color;      // borda roxa
+      border-color: vars.$purple-color;      // borda roxa
     }
 
 }
@@ -186,8 +211,9 @@ main{
 
 .step-card p {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 500;
     color: vars.$primary-color;
+    //font-family: 'Poppins', sans-serif;
 }
 
 .step-number {
@@ -202,6 +228,7 @@ main{
 
     background-color: vars.$primary-color;
     color: #fff;
+    font-family: 'Poppins', sans-serif;
 
     display: flex;
     align-items: center;
@@ -283,7 +310,7 @@ main{
         text-align: center;
         font-size: 32px;
         font-weight: 600;
-        color: #4b1f6f;
+        color: vars.$primary-color;
         margin-bottom: 40px;
     }
 
@@ -316,12 +343,13 @@ main{
 
     &__numero {
         background-color: #a7ddd0;
-        color: #4b1f6f;
         font-weight: 600;
         border-radius: 6px;
         padding: 6px 10px;
         min-width: 36px;
         text-align: center;
+        font-family: 'Inter', sans-serif;
+        color: vars.$primary-color;
     }
 
     &__pergunta {
@@ -329,7 +357,8 @@ main{
         margin: 0;
         font-size: 20px;
         font-weight: 500;
-        color: #4b1f6f;
+        font-family: 'Inter', sans-serif;
+        color: vars.$primary-color;
     }
 
     &__icone {
@@ -349,8 +378,9 @@ main{
         overflow: hidden;
         padding: 0 20px 0 72px;
         transition: max-height 0.35s ease, opacity 0.25s ease;
-        font-size: 14px;
-        color: #4b1f6f;
+        font-size: 18px;
+        font-family: 'Inter', sans-serif;
+        color: vars.$primary-color;
     }
 
     &.active {

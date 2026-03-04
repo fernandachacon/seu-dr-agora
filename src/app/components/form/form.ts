@@ -6,6 +6,8 @@ import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { NgOptimizedImage } from '@angular/common';
 import { PatientService } from '../../services/patient.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-form',
@@ -23,11 +25,13 @@ import { PatientService } from '../../services/patient.service';
 export class Form {
   etapa = 1;
   form: FormGroup;
+  enviando = false;
 
   constructor(
     private fb: FormBuilder,
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
@@ -37,23 +41,95 @@ export class Form {
       data: ['', Validators.required],
       cep: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
+      senha: [
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/)
+        ]
+      ],
       confirmarSenha: ['', Validators.required],
-      termos: [false, Validators.requiredTrue],
+      terms: [false, Validators.requiredTrue],
+
       rua: ['', Validators.required],
       numero: ['', Validators.required],
-      complemento: ['', Validators.required],
+      complemento: [''],
       bairro: ['', Validators.required],
       cidade: ['', Validators.required],
       estado: ['', Validators.required]
-    });
+    }, 
+    { validators: this.senhasIguais }
+  );
+  }
+/* =========================
+  🔐 VALIDAÇÃO SENHAS IGUAIS
+  ========================= */
+  private senhasIguais(group: FormGroup) {
+    const senha = group.get('senha')?.value;
+    const confirmar = group.get('confirmarSenha')?.value;
+
+    if (!senha || !confirmar) return null;
+
+    return senha === confirmar ? null : { senhasDiferentes: true };
+  }
+/* =========================
+🔍 BUSCA CEP (ViaCEP)
+========================= */
+  buscarCep(): void {
+    const cep = this.form.get('cep')?.value;
+
+    if (!cep) return;
+
+    const cepLimpo = cep.replace(/\D/g, '');
+
+    if (cepLimpo.length !== 8) return;
+
+    this.http
+      .get<any>(`https://viacep.com.br/ws/${cepLimpo}/json/`)
+      .subscribe({
+        next: (res) => {
+          if (res.erro) {
+            console.warn('CEP não encontrado');
+            return;
+          }
+
+          this.form.patchValue({
+            rua: res.logradouro,
+            bairro: res.bairro,
+            cidade: res.localidade,
+            estado: res.uf
+          });
+        },
+        error: (err) => {
+          console.error('Erro ao buscar CEP', err);
+        }
+      });
   }
 
+// =========================
+// 👁️ VISIBILIDADE DA SENHA
+// =========================
+mostrarSenha = false;
+mostrarConfirmarSenha = false;
+
+toggleSenha() {
+  this.mostrarSenha = !this.mostrarSenha;
+}
+
+toggleConfirmarSenha() {
+  this.mostrarConfirmarSenha = !this.mostrarConfirmarSenha;
+}
+
+/* =========================
+📤 SUBMIT
+========================= */
   submit(): void {
-    if (this.form.invalid) {
+    if (this.form.invalid || this.enviando) {
       this.form.markAllAsTouched();
       return;
     }
+    this.enviando = true;
 
     const payload = {
       cpf: this.form.value.cpf,
@@ -95,10 +171,9 @@ export class Form {
     });
   }
 
-  // ------------------------
-  // Helpers
-  // ------------------------
-
+  /* =========================
+🔧 HELPERS
+========================= */
   private formatDateToApi(date: Date | string): string {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0');
@@ -135,7 +210,9 @@ export class Form {
 
     return digits;
   }
-
+/* =========================
+🔙 NAVEGAÇÃO
+========================= */
   voltar() {
     this.router.navigate(['/home']);
   }
