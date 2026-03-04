@@ -4,6 +4,8 @@ import { RouterOutlet, Router, NavigationEnd, RouterLink } from '@angular/router
 import { HttpClient } from '@angular/common/http';
 import { Footer } from '../footer/footer';
 import { filter } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 interface Perfil {
   id: number;
@@ -30,7 +32,8 @@ export class AreaPaciente implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +57,8 @@ export class AreaPaciente implements OnInit {
         next: (res) => {
           this.perfil = res.user;
           console.log('Perfil final:', this.perfil);
+          this.cdr.detectChanges();
+          
         },
         error: (err) => {
           console.error('Erro ao buscar perfil:', err);
