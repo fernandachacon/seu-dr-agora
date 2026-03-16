@@ -1,9 +1,7 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap";
 
-/* =========================
-    BASE
-========================= */
+/* BASE */
 
 .main {
     margin: 0;
@@ -11,9 +9,7 @@
     min-height: 100vh;
 }
 
-/* =========================
-    TOPBAR
-========================= */
+/* TOPBAR */
 
 .topbar {
     height: 80px;
@@ -29,13 +25,19 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 16px; // era 0 e 16
+    padding: 0 16px; 
     max-width: 1200px;
     margin: 0 auto;
+    gap: 24px;
 }
 
-/* Estilização da Logo para ficar igual ao que fizemos antes */
+.left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* LOGO */
 .logo {
     height: 60px; 
     width: auto;
@@ -43,9 +45,13 @@
     cursor: pointer;
 }
 
+/* Menu centralizado */
 .menu {
+    flex: 1;
     display: flex;
-    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
 
     span {
         cursor: pointer;
@@ -55,7 +61,7 @@
         white-space: nowrap;
         transition: opacity 0.2s ease;
     }
-    &:hover {
+    span:hover {
             opacity: 0.8;
         }
 }
@@ -73,6 +79,7 @@
     display: flex;
     align-items: center;
     gap: 12px; 
+    flex-shrink: 0;
 }
 
 .nome {
@@ -80,6 +87,7 @@
     font-weight: 600;
     text-transform: uppercase;
     color: white;
+    white-space: nowrap;
 }
 
 .avatar {
@@ -88,12 +96,18 @@
     border-radius: 50%;
     background: #eee;
     border: 2px solid vars.$primary-color;
+    flex-shrink: 0;
 }
 
 .logout {
         display: flex;
-        gap: 16px;
-        margin-top: 8px;
+        align-items: center;
+        margin-top: 0;
+
+        a {
+        display: flex;
+        align-items: center;
+        }
 
         a img {
         width: 32px;
@@ -106,9 +120,7 @@
         filter: brightness(1.2); // Feedback visual extra
         }
 }
-/* =========================
-    CONTEÚDO
-========================= */
+/* CONTEÚDO */
 
 .conteudo {
   padding: 24px 16px; // ✅ MOBILE FIRST
@@ -116,9 +128,7 @@
 
 
 
-/* =========================
-    DESKTOP
-========================= */
+/* DESKTOP */
 
 @media (min-width: 1024px) {
     .topbar-container {
@@ -142,18 +152,21 @@
     }
 }
 
-/* =========================
-    ADAPTAÇÃO RESPONSIVA (COMO O OUTRO HEADER)
-========================= */
+/* MOBILE */
 
 @media (max-width: 768px) {
     .topbar {
         height: 70px;
     }
 
+    .topbar-container {
+    gap: 12px;
+    }
+
     .menu-toggle {
         display: block; // Aparece no mobile
         order: 2;
+        flex-shrink: 0;
     }
 
     .left {
@@ -173,6 +186,7 @@
         background-color: #480A60; // Fundo do menu aberto no mobile
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 20px;
         padding: 30px 0;
         display: none; // Escondido por padrão
@@ -185,5 +199,15 @@
 
     .logo {
         height: 45px;
+    }
+
+    .avatar {
+    width: 34px;
+    height: 34px;
+    }
+
+    .logout a img {
+        width: 24px;
+        height: 24px;
     }
 }

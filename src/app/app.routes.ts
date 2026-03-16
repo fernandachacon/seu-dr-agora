@@ -15,6 +15,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/login/login').then(m => m.Login),
     },
     {
+        path: 'agendamento-publico',
+        loadComponent: () => import('./components/agendamento-publico/agendamento-publico').then(m => m.AgendamentoPublico),
+    },
+    {
         path: 'area-paciente',
         loadComponent: () =>
         import('./components/area-paciente/area-paciente').then(m => m.AreaPaciente),
@@ -48,6 +52,18 @@ export const routes: Routes = [
             loadComponent: () =>
             import('./components/area-paciente/agendamentos/agendamentos')
                 .then(m => m.Agendamentos),
+        },
+        {
+            path: 'prontuario',
+            loadComponent: () =>
+            import('./components/area-paciente/prontuario/prontuario')
+                .then(m => m.Prontuario),
+        },
+        {
+            path: 'minhas-consultas',
+            loadComponent: () =>
+            import('./components/area-paciente/minhas-consultas/minhas-consultas')
+                .then(m => m.MinhasConsultas),
         },
         ],
     },
