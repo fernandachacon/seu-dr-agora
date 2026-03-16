@@ -96,6 +96,20 @@ form {
     a {
         font-weight: 600;
         cursor: pointer;
+        text-decoration: none;      // remove sublinhado
+        color: vars.$third-color;   // mesma cor do texto
+    }
+
+    a:hover {
+        text-decoration: underline; // opcional: aparece só ao passar o mouse
+    }
+
+    a:visited {
+        color: vars.$third-color;   // impede ficar roxo após clicar
+    }
+
+    a:active {
+        color: vars.$third-color;   // impede ficar vermelho ao clicar
     }
 }
 

@@ -11,7 +11,7 @@
                         {{ servico.titulo.replace(' a ', '\n') }}
                     </h3>
                     <strong class="card-price">R$ {{ servico.preco }}</strong>
-                    <button class="btn">Marcar Consulta</button>
+                    <button class="btn" (click)="marcarConsulta(servico)">Marcar Consulta</button>
                 </div>
                 }
             </div>

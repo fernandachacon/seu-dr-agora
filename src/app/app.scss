@@ -4,34 +4,69 @@
 
 .btn-flutuante {
     height: 47px;
-    padding: 12px;
-    width: 200px;
+    padding: 0 20px;
+    min-width: 200px;
 
     position: fixed;
-    bottom: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
     right: 24px;
 
     background-color: vars.$purple-color;
     color: #fff;
 
     border: none;
-    border-radius: 12px; //quanto maior, mais arredondado o botao
+    border-radius: 12px;
     cursor: pointer;
 
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    
-    line-height: 1;     // evita corte vertical
-    white-space: nowrap; // evita quebrar texto
+
+    line-height: 1;
+    white-space: nowrap;
 
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     z-index: 2000;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
+/* Hover desktop */
 .btn-flutuante:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 26px rgba(0,0,0,0.3);
+}
+
+/* Feedback mobile (toque) */
+.btn-flutuante:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .btn-flutuante {
+        width: calc(100% - 32px);
+        right: 16px;
+        left: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+}
+
+.btn-flutuante {
+    animation: fabIn 180ms ease-out;
+    will-change: transform, opacity;
+}
+
+.btn-flutuante.saindo {
+    animation: fabOut 160ms ease-in forwards;
+}
+
+@keyframes fabIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fabOut {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 0; transform: translateY(10px) scale(0.98); }
 }

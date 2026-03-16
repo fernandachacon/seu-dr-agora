@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { AuthService } from '../../services/auth.service';
@@ -11,7 +11,8 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    RouterModule,
     Header,
     Footer
   ],
@@ -58,5 +59,5 @@ export class Login {
       this.loading = false;
     }
   });
-}
+  }
 }

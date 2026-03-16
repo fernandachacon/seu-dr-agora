@@ -1,0 +1,67 @@
+<main class="main">
+    <h1 class="titulo">Agendamentos</h1>
+    
+    <section class="page">
+    <div class="grid">
+        <!-- Calendário -->
+        <div class="card">
+        <div class="calendar-header">
+            <button type="button" class="nav" (click)="prevMonth()">‹</button>
+            <div class="title">{{ monthLabel() }}</div>
+            <button type="button" class="nav" (click)="nextMonth()">›</button>
+        </div>
+
+        <div class="weekdays">
+            <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+        </div>
+
+        <div class="days">
+            <button
+            *ngFor="let cell of daysGrid()"
+            type="button"
+            class="day"
+            [class.empty]="!cell.date"
+            [class.selected]="cell.date && isSelected(cell.date)"
+            [disabled]="!cell.date"
+            (click)="cell.date && selectDay(cell.date)"
+            >
+            {{ cell.day ?? '' }}
+            </button>
+        </div>
+        </div>
+
+        <!-- Horários -->
+        <div class="card">
+        <h2>Horários</h2>
+
+        <p class="muted" *ngIf="selectedDate() as d">
+            Selecione um horário para <strong>{{ d.toLocaleDateString('pt-BR') }}</strong>
+        </p>
+
+        <div class="slots">
+            <button
+            *ngFor="let s of slots()"
+            type="button"
+            class="slot"
+            [class.disabled]="!s.available"
+            [class.selected]="isSlotSelected(s)"
+            [disabled]="!s.available"
+            (click)="selectSlot(s)"
+            >
+            {{ s.time }}
+            <small>{{ s.available ? 'Disponível' : 'Indisponível' }}</small>
+            </button>
+        </div>
+
+        <button
+            type="button"
+            class="confirm-btn"
+            [disabled]="!selectedDate() || !selectedSlot()"
+            (click)="confirmarAgendamento()"
+        >
+            Confirmar agendamento
+        </button>
+        </div>
+    </div>
+</section>
+</main>

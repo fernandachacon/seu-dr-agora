@@ -7,6 +7,7 @@
                 width="50"
                 height="50"
                 class="logo"
+                routerLink="/"
             />
         </div>
         
@@ -15,8 +16,17 @@
         </button>
 
         <nav class="menu" [class.aberto]="menuAberto">
-            <span (click)="menuAberto = false">Painel</span>
-            <span (click)="menuAberto = false">Prontuário</span>
+            <span routerLink="/area-paciente" 
+            routerLinkActive="ativo" 
+            [routerLinkActiveOptions]="{ exact: true }" 
+            (click)="fecharMenu()">
+            Painel
+            </span>
+            <span routerLink="/area-paciente" 
+            routerLinkActive="ativo"  
+            (click)="fecharMenu()">
+            Prontuário
+            </span>
         </nav>
 
        <div class="usuario" *ngIf="perfil">

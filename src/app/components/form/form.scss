@@ -1,9 +1,7 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap";
 
-/* =====================
-BASE
-===================== */
+/* BASE */
 .page-container {
     display: flex;
     min-height: 100vh;
@@ -36,9 +34,7 @@ BASE
     top: 100px;       /* Distância que ela para do topo ao rolar */
 }
 
-/* =====================
-FORM
-===================== */
+/* FORM */
 form {
     width: 100%;
     max-width: 720px; /* Largura do form */
@@ -62,9 +58,7 @@ form {
 }
 
 
-/* =====================
-TOPO
-===================== */
+/* TOPO */
 .topo {
     width: 100%;
     max-width: 720px; //mesmo tamanho do form
@@ -98,9 +92,7 @@ h1 {
     white-space: nowrap;
 }
 
-/* =====================
-CAMPOS
-===================== */
+/* CAMPOS */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -134,9 +126,7 @@ select {
     background-size: 18px;
 }
 
-/* =====================
-CEP
-===================== */
+/* CEP */
 .campo.cep .cep-wrapper {
     display: flex;
     gap: 12px;
@@ -156,21 +146,17 @@ CEP
     white-space: nowrap;
 }
 
-/* =====================
-ERROS
-===================== */
+/* ERROS */
 small {
     margin-top: 4px;
     font-size: 12px;
     color: #c62828;
 }
 
-/* =====================
-AÇÃO
-===================== */
+/* AÇÃO */
 .btn-cadastrar {
     width: 100%;
-    margin-top: 32px;
+    margin-top: 20px;
     padding: 14px;
     background: vars.$purple-color;
     color: #fff;
@@ -193,18 +179,20 @@ AÇÃO
     color: #666;
     text-align: center;
 }
-/* =====================
-TERMOS
-===================== */
+/* TERMOS */
 .terms-container {
     margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .terms-label {
     display: flex;
     align-items: flex-start; /* 🔧 chave do alinhamento. Era center */
     gap: 10px;
-    font-size: 14px;
+    font-size: 16px;
+    text-justify: distribute-all-lines;
     color: vars.$purple-color;
     line-height: 1.5;
     //max-width: 100%;
@@ -238,7 +226,7 @@ TERMOS
 .login-link {
     margin-top: 24px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     color: #6b7280;
 
     a {
@@ -275,9 +263,6 @@ TERMOS
     }
 }
 
-/* =====================
-MOBILE
-===================== */
 /* MOBILE */
 @media (max-width: 480px) {
     .terms-label {
@@ -285,13 +270,51 @@ MOBILE
     }
 }
 
-@media (max-width: 768px) {
+/* TABLET E ABAIXO (inclui iPad) */
+@media (max-width: 1200px) {
+
+  /* some com a imagem */
     .image-container {
-        display: none;
+        display: none !important;
     }
 
+    /* form ocupa tudo */
     .content-container {
-        flex: 1;
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 40px 32px;
+    }
+
+    form,
+    .topo {
+        max-width: 720px; /* mantém bonito no tablet */
+        width: 100%;
+    }
+
+    /* topo em linha, sem esmagar o título */
+    .topo {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        text-align: center;
+        white-space: normal; /* permite quebrar se precisar */
+    }
+
+    /* botões voltam ao tamanho natural */
+    .btn-voltar,
+    .btn-login {
+        width: auto;
+    }
+}
+    /* MOBILE */
+    @media (max-width: 768px) {
+
+    .content-container {
         padding: 24px 16px;
     }
 
@@ -300,10 +323,17 @@ MOBILE
         max-width: 100%;
     }
 
+    /* no mobile, aí sim empilha */
     .topo {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 12px;
         text-align: center;
+    }
+
+    .btn-voltar,
+    .btn-login {
+        width: 100%;
     }
 
     h1 {
@@ -316,15 +346,5 @@ MOBILE
 
     .btn-cep {
         width: 100%;
-    }
-}
-
-@media (max-width: 1024px) {
-    .content-container {
-        flex: 0 0 60%; /* Form ganha mais espaço */
-        padding: 40px 48px; /* Diminui o respiro lateral */
-    }
-    .image-container {
-        flex: 0 0 40%; /* Imagem encolhe um pouco */
     }
 }
