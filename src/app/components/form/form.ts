@@ -50,7 +50,11 @@ export class Form {
         ]
       ],
       confirmarSenha: ['', Validators.required],
-      terms: [false, Validators.requiredTrue],
+      
+      terms1: [false, Validators.requiredTrue],
+      terms2: [false, Validators.requiredTrue],
+      terms3: [false, Validators.requiredTrue],
+      terms4: [false, Validators.requiredTrue],
 
       rua: ['', Validators.required],
       numero: ['', Validators.required],
@@ -214,7 +218,7 @@ toggleConfirmarSenha() {
 🔙 NAVEGAÇÃO
 ========================= */
   voltar() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   login() {

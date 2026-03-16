@@ -8,6 +8,7 @@
                 width="50"
                 height="50"
                 class="logo"
+                routerLink="/"
             />
     </div>
 
@@ -17,11 +18,11 @@
     </button>
 
     <nav class="menu" [class.aberto]="menuAberto">
-      <a href="#inicio" (click)="fecharMenu()">INÍCIO</a>
-      <a href="#areas" (click)="fecharMenu()">ÁREAS DE ATUAÇÃO</a>
-      <a href="#como-agendar" (click)="fecharMenu()">COMO AGENDAR</a>
-      <a href="#diferenciais" (click)="fecharMenu()">DIFERENCIAIS</a>
-      <a href="#duvidas" (click)="fecharMenu()">DÚVIDAS</a>
+      <a (click)="irParaSecao('inicio')">INÍCIO</a>
+      <a (click)="irParaSecao('areas')">ÁREAS DE ATUAÇÃO</a>
+      <a (click)="irParaSecao('como-agendar')">COMO AGENDAR</a>
+      <a (click)="irParaSecao('diferenciais')">DIFERENCIAIS</a>
+      <a (click)="irParaSecao('duvidas')">DÚVIDAS</a>
     </nav>
 
     <section class="cta-section desktop-only">

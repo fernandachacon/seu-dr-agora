@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router, NavigationEnd, RouterLink } from '@angular/router';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterOutlet, Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Footer } from '../footer/footer';
 import { filter } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 
 interface Perfil {
@@ -20,6 +21,8 @@ interface Perfil {
     CommonModule,
     RouterOutlet,
     RouterLink,
+    RouterLinkActive,
+    NgOptimizedImage,
     Footer
   ],
   templateUrl: './area-paciente.html',

@@ -34,6 +34,10 @@ a {
     font-weight: 600;
     letter-spacing: 0.2px;
     text-decoration: none;  
+    .menu a {
+    cursor: pointer;
+    text-decoration: none;
+}
 }
 
 .menu {
@@ -49,6 +53,11 @@ a {
     font-size: 28px;
     cursor: pointer;
     color: vars.$primary-color;
+}
+
+.menu a {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {

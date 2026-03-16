@@ -53,6 +53,7 @@
         font-weight: 600;
         text-transform: uppercase;
         white-space: nowrap;
+        transition: opacity 0.2s ease;
     }
     &:hover {
             opacity: 0.8;

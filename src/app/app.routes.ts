@@ -1,54 +1,57 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { Form } from './components/form/form';
-import { Login } from './components/login/login';
 
 export const routes: Routes = [
     {
-        path: "",
-        component: Home
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => import('./components/home/home').then(m => m.Home),
     },
     {
-        path: "form",
-        component: Form
+        path: 'form',
+        loadComponent: () => import('./components/form/form').then(m => m.Form),
     },
     {
         path: 'login',
-        loadComponent: () =>
-            import('./components/login/login')
-                .then(m => m.Login)
+        loadComponent: () => import('./components/login/login').then(m => m.Login),
     },
     {
         path: 'area-paciente',
         loadComponent: () =>
-            import('./components/area-paciente/area-paciente')
-                .then(m => m.AreaPaciente),
+        import('./components/area-paciente/area-paciente').then(m => m.AreaPaciente),
         children: [
-            {
+        {
             path: '',
+            pathMatch: 'full',
             loadComponent: () =>
-                import('./components/area-paciente/painel/painel')
-                    .then(m => m.Painel)
-            },
-            {
+            import('./components/area-paciente/painel/painel').then(m => m.Painel),
+        },
+        {
             path: 'selecione-pagamento',
             loadComponent: () =>
-                import('./components/area-paciente/selecione-pagamento/selecione-pagamento')
-                    .then(m => m.SelecionePagamento)
-            },
-            {
+            import('./components/area-paciente/selecione-pagamento/selecione-pagamento')
+                .then(m => m.SelecionePagamento),
+        },
+        {
             path: 'pagamento-pix',
             loadComponent: () =>
-                import('./components/area-paciente/pagamento-pix/pagamento-pix')
-                    .then(m => m.PagamentoPix)
-            },
-            {
+            import('./components/area-paciente/pagamento-pix/pagamento-pix')
+                .then(m => m.PagamentoPix),
+        },
+        {
             path: 'pagamento-cartao',
             loadComponent: () =>
-                import('./components/area-paciente/pagamento-cartao/pagamento-cartao')
-                .then(m => m.PagamentoCartao)
-            }
-        ]
+            import('./components/area-paciente/pagamento-cartao/pagamento-cartao')
+                .then(m => m.PagamentoCartao),
         },
-        { path: '', redirectTo: 'login', pathMatch: 'full' }
+        {
+            path: 'agendamentos',
+            loadComponent: () =>
+            import('./components/area-paciente/agendamentos/agendamentos')
+                .then(m => m.Agendamentos),
+        },
+        ],
+    },
+
+    // se cair em qualquer rota inexistente:
+    { path: '**', redirectTo: 'login' },
 ];

@@ -1,4 +1,12 @@
-<router-outlet />
-<button class="btn-flutuante" (click)="marcarConsulta()">
-    MARCAR CONSULTA
-</button>
+<router-outlet></router-outlet>
+
+@if (mostrarBotaoFlutuante || botaoSaindo) {
+    <button
+        class="btn-flutuante"
+        type="button"
+        [class.saindo]="botaoSaindo"
+        (click)="marcarConsulta()"
+    >
+        MARCAR CONSULTA
+    </button>
+}
