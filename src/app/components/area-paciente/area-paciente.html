@@ -23,10 +23,8 @@
             <span class="nome">{{ perfil.nome }}</span>
             <div class="avatar"></div>
 
-            <div class="logout">
-                <a routerLink="/login">
-                <img src="/images/logout.png" alt="Sair">
-                </a>
+            <div class="logout" (click)="logout()">
+                <a><img src="/images/logout.png" alt="Sair"></a>
             </div>
         </div>
     </div>

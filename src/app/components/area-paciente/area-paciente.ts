@@ -58,7 +58,7 @@ export class AreaPaciente implements OnInit {
           this.perfil = res.user;
           console.log('Perfil final:', this.perfil);
           this.cdr.detectChanges();
-          
+
         },
         error: (err) => {
           console.error('Erro ao buscar perfil:', err);
@@ -68,6 +68,11 @@ export class AreaPaciente implements OnInit {
           }
         }
       });
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   fecharMenu(): void {
