@@ -1,7 +1,7 @@
 @use 'color-variables' as vars;
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap";
 
-.login-main {
+.redefinir-senha-main {
     min-height: calc(100vh - 140px); // header + footer
     display: flex;
     justify-content: center;
@@ -62,8 +62,8 @@ form {
         font-size: 14px;
 
         &:focus {
-        border-color: vars.$third-color;
-        outline: none;
+            border-color: vars.$third-color;
+            outline: none;
         }
     }
 
@@ -74,6 +74,32 @@ form {
     }
 }
 
+/* INPUT COM OLHO (senha) */
+.input-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+        width: 100%;
+        padding-right: 44px;
+    }
+}
+
+.btn-eye {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOTÃO */
 .btn-entrar {
     width: 100%;
     margin-top: 24px;
@@ -87,40 +113,42 @@ form {
     cursor: pointer;
 }
 
+/* TEXTO DO RODAPÉ */
 .footer-text {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 16px;
     color: vars.$third-color;
+    line-height: 1.2;
 
     a {
         font-weight: 600;
         cursor: pointer;
-        text-decoration: none;      // remove sublinhado
-        color: vars.$third-color;   // mesma cor do texto
+        text-decoration: none;
+        color: vars.$third-color;
     }
 
     a:hover {
-        text-decoration: underline; // opcional: aparece só ao passar o mouse
+        text-decoration: underline;
     }
 
     a:visited,
     a:active {
-        color: vars.$third-color;   // impede ficar roxo após clicar
+        color: vars.$third-color;
     }
 }
 
 .footer-text + .footer-text {
-    margin-top: 2px; // pode testar 4px também
+    margin-top: 4px;
 }
 
 /* =========================
-    RESPONSIVIDADE - LOGIN
-   ========================= */
+   RESPONSIVIDADE
+========================= */
 
 /* Tablets e desktop */
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
     .content-container {
         max-width: 520px;
         padding: 48px 40px;
@@ -140,7 +168,7 @@ form {
 
 /* Mobile */
 @media (max-width: 767px) {
-    .login-main {
+    .redefinir-senha-main {
         align-items: flex-start;
         padding-top: 32px;
     }

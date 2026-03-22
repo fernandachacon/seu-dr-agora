@@ -15,7 +15,7 @@ import { Router, RouterModule } from '@angular/router';
 export class Painel {
   servicos = [
     { titulo: 'Atendimento em a Clínica Médica', preco: 69 },
-    { titulo: 'Atendimento com a Psicólogo', preco: 69 },
+    { titulo: 'Atendimento com a Psicólogo', preco: 89 },
     { titulo: 'Atendimento Médico em a Saúde Mental', preco: 169 },
     { titulo: 'Atendimento Médico em a Endocrinologia', preco: 169 },
     { titulo: 'Atendimento Médico em a Otorrino', preco: 169 }

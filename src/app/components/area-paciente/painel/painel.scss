@@ -81,7 +81,7 @@
     border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
     border-radius: 12px;
     cursor: pointer;
-    background-color: white;
+    background-color: vars.$secondary-color; //verde
     color: vars.$primary-color;
     transition: all 0.3s ease;
 

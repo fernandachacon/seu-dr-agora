@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<main class="esqueceu-senha-main">
+    <div class="page-container">
+        <div class="content-container">
+            <h1>Esqueci minha senha</h1>
+            <p>Digite seu e-mail para redefinir sua senha</p>
+            
+            <form class="login-box" [formGroup]="form" (ngSubmit)="enviar()">
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" formControlName="email" />
+                </div>
+
+                <button class="btn-entrar" type="submit">
+                    Enviar
+                </button>
+
+                <p class="footer-text">
+                    Ainda não possui uma conta? <a routerLink="/form">Criar conta</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

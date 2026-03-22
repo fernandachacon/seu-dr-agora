@@ -31,10 +31,14 @@ export class Header {
     this.router.navigate(['/form']);
   }
 
+  irParaLogin() {
+    this.fecharMenu();
+    this.router.navigate(['/login']);
+  }
+
   irParaSecao(id: string) {
     this.fecharMenu();
     // Vai pra Home e aplica o fragment (#id)
     this.router.navigate(['/'], { fragment: id });
   }
 }
-

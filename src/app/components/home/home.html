@@ -16,19 +16,21 @@
                 width="1695"
                 height="500"
                 class="banner"
+                routerLink="/form"
             />
         </picture>
 
     </section>
 
-    <section id="areas" class="specialties">
+    <section id="pronto-atendimento" class="specialties specialties--pronto">
         <div class="container">
         <div class="specialties-container">
-            <h2 class="section-title">ÁREAS DE ATUAÇÃO</h2>
-            <div class="cards">
+            <h2 class="section-title">PRECISANDO DE ATENDIMENTO AGORA?</h2>
+
+            <div class="cards cards--single">
                 <!-- Card -->
-                <div class="card">
-                    <h3 class="card-title">Atendimento em Clínica Médica</h3>
+                <div class="card card--pronto">
+                    <h3 class="card-title">Atendimento Clínico Geral</h3>
                     <span class="card-subtitle">Médico <br> Clínico Geral</span>
 
                     <div class="card-price">R$ 69</div>
@@ -42,13 +44,22 @@
                     <li>Emissão de atestado, quando indicado</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Atendimento agora</button>
                 </div>
-                <!-- Repita para os outros cards -->
+            </div>
+        </div>
+        </div>
+    </section>
+    
+        <section id="areas" class="specialties specialties--agendamento">
+        <div class="container">
+        <div class="specialties-container">
+            <h2 class="section-title">PREFERE AGENDAR SUA CONSULTA?</h2>
+            <div class="cards">
                 <!-- Card -->
                 <div class="card">
                     <h3 class="card-title">Atendimento Médico em Saúde Mental</h3>
-                    <span class="card-subtitle">Pós-graduação em Psiquiatria</span>
+                    <span class="card-subtitle">Médico Pós-graduando em Psiquiatria</span>
 
                     <div class="card-price">R$ 169</div>
 
@@ -61,13 +72,13 @@
                     <li>Renovação de receitas, quando indicado</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/agendamento-publico">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
                     <h3 class="card-title">Atendimento Médico em Endocrinologia</h3>
-                    <span class="card-subtitle">Pós-graduação em Endocrinologia</span>
+                    <span class="card-subtitle">Médico Pós-graduando em Endocrinologia</span>
 
                     <div class="card-price">R$ 169</div>
 
@@ -81,13 +92,13 @@
                     <li>Distúrbios hormonais femininos</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
                     <h3 class="card-title">Atendimento Médico em Otorrino</h3>
-                    <span class="card-subtitle">Pós-graduação em Otorrinolaringologia</span>
+                    <span class="card-subtitle">Médico Pós-graduando em Otorrinolaringologia</span>
 
                     <div class="card-price">R$ 169</div>
 
@@ -99,7 +110,7 @@
                     <li>Alterações do olfato e do paladar</li>
                 </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
             </div>
@@ -109,83 +120,93 @@
     <section id="psicologia" class="specialties">
         <div class="container">
         <div class="specialties-container">
-            <h2 class="section-title">PSICOLOGIA</h2>
+            <h2 class="section-title">PRECISANDO DE TERAPIA COM PSICÓLOGO?</h2>
             <div class="cards">
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Atendimento com Psicólogo</h3>
+                    <h3 class="card-title">1 SESSÃO DE <br>TERAPIA</h3>
                     <span class="card-subtitle">Psicologia <br><br></span>
 
-                    <div class="card-price">R$ 69</div>
+                    <div class="card-price">R$ 89</div>
+                    <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
                     <li>1º encontro</li>
                     <li>Acolhimento inicial</li>
                     <li>Orientação psicológica baseada em evidências</li>
+                    <li>Ansiedade, estresse e transtornos de pânico</li>
+                    <li>Transtornos depressivos</li>
+                    <li>Alterações do humor</li>
+                    <li>Regulação emocional e manejo do estresse</li>
                     <li>Sessões com duração de 3o minutos</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Atendimento com Psicólogo</h3>
+                    <h3 class="card-title">PACOTE<br>2 SESSÕES DE TERAPIA</h3>
                     <span class="card-subtitle">Psicologia <br><br></span>
 
-                    <div class="card-price">R$ 69</div>
+                    <div class="card-price">R$ 81</div>
+                    <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>Acompanhamento psicoterapêutico</li>
+                    <li>Ideal para acompanhamentos quinzenais</li>
                     <li>Orientação psicológica baseada em evidências</li>
                     <li>Ansiedade, estresse e transtornos de pânico</li>
                     <li>Transtornos depressivos</li>
                     <li>Alterações do humor</li>
-                    <li>Dificuldades relacionadas ao sono</li>
                     <li>Regulação emocional e manejo do estresse</li>
+                    <li>Sessões com duração de 3o minutos</li>
+                    
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Atendimento com Psicólogo</h3>
+                    <h3 class="card-title">PACOTE<br>4 SESSÕES DE TERAPIA</h3>
                     <span class="card-subtitle">Psicologia <br><br></span>
 
-                    <div class="card-price">R$ 69</div>
+                    <div class="card-price">R$ ??</div>
+                    <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>Acompanhamento psicoterapêutico</li>
+                    <li>Ideal para acompanhamento semanal</li>
                     <li>Orientação psicológica baseada em evidências</li>
                     <li>Ansiedade, estresse e transtornos de pânico</li>
                     <li>Transtornos depressivos</li>
                     <li>Alterações do humor</li>
-                    <li>Dificuldades relacionadas ao sono</li>
                     <li>Regulação emocional e manejo do estresse</li>
+                    <li>Sessões com duração de 3o minutos</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
                 <div class="card">
-                    <h3 class="card-title">Atendimento com Psicólogo</h3>
+                    <h3 class="card-title">PACOTE<br>8 SESSÕES DE TERAPIA</h3>
                     <span class="card-subtitle">Psicologia <br><br></span>
 
                     <div class="card-price">R$ 69</div>
+                    <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>Acompanhamento psicoterapêutico</li>
+                    <li>Ideal para acompanhamento semanal, por 2 meses</li>
+                    <li>Menor valor por consulta</li>
                     <li>Orientação psicológica baseada em evidências</li>
                     <li>Ansiedade, estresse e transtornos de pânico</li>
                     <li>Transtornos depressivos</li>
                     <li>Alterações do humor</li>
-                    <li>Dificuldades relacionadas ao sono</li>
                     <li>Regulação emocional e manejo do estresse</li>
+                    <li>Sessões com duração de 3o minutos</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Marcar Consulta</button>
+                    <button class="btn secondary" routerLink="/form">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 
@@ -207,12 +228,12 @@
 
             <div class="step-card">
             <span class="step-number">02</span>
-            <p>Preencha seus dados e efetue o pagamento</p>
+            <p>Escolha o dia e horário da sua consulta online</p>
             </div>
 
             <div class="step-card">
             <span class="step-number">03</span>
-            <p>Escolha o dia e horário da sua consulta online</p>
+            <p>Preencha seus dados e efetue o pagamento</p>
             </div>
 
             <div class="step-card">

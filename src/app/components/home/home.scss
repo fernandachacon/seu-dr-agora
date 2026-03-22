@@ -2,13 +2,21 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
 
 // Variável de espaçamento padrão para manter consistência
-$section-spacing: 48px;
-$footer-gap: 80px; // Espaco para o footer
+$space-1: 8px;
+$space-2: 16px;
+$space-3: 24px;
+$space-4: 32px;
+$space-5: 48px;
+
+$section-spacing: $space-4; // 32px
+$section-title-gap: 20px;
+$card-gap: $space-3; // 24px
+$footer-gap: 64px;
 
 main{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
     font-family: 'Inter', sans-serif;
     background-color: rgba(255, 255, 255, 0.7);
     box-sizing: border-box;
@@ -47,6 +55,7 @@ main{
 .specialties {
     background-color: white;
     padding-top: $section-spacing;
+    padding-bottom: $section-spacing;
 }
 
 .specialties-container {
@@ -54,17 +63,119 @@ main{
     margin: 0 auto;
 }
 
+.specialties--agendamento .cards {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    scroll-snap-type: none;
+}
+
 .section-title {
     text-align: center;
     font-size: 32px;
     font-weight: 600;
-    color: vars.$primary-color; // roxo
-    margin-bottom: 30px;
+    color: vars.$primary-color;
+    margin-bottom: 16px;
 }
 
+/* ===== PRONTO ATENDIMENTO ===== */
+
+.specialties--pronto {
+    background: white;
+}
+.specialties--pronto .section-title {
+    margin-bottom: 12px;
+}
+
+.cards.cards--single {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    padding-top: 12px;
+    padding-bottom: 0;
+
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+}
+
+.card.card--pronto {
+    min-width: 0;
+    width: 100%;
+    max-width: 420px;
+
+    background: linear-gradient(
+    180deg,
+    rgba(79, 195, 161, 0.12) 0%,
+    rgba(79, 195, 161, 0.05) 100%
+);
+    border: 2px solid rgba(79, 195, 161, 0.35);
+    border-radius: 24px;
+    padding: 56px 32px 40px; 
+    box-shadow: 0 12px 32px rgba(75, 31, 111, 0.08);
+
+    position: relative;
+    overflow: visible;
+}
+
+.card--pronto::before {
+    content: 'PRONTO ATENDIMENTO';
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translate(-50%, -50%); // 👈 ESSA LINHA FAZ O EFEITO PERFEITO MEIO DENTRO E MEIO FORA DO CARD
+
+    background-color: vars.$secondary-color;
+    color: vars.$primary-color;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    
+    padding: 8px 18px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.card--pronto .card-title {
+    text-align: center;
+    font-size: 24px;
+}
+
+.card--pronto .card-subtitle {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.card--pronto .card-price {
+    text-align: center;
+    font-size: 64px;
+    color: vars.$purple-color;
+}
+
+.card--pronto .card-features li {
+    font-size: 18px;
+}
+
+.card--pronto .btn {
+    height: 52px;
+    font-size: 18px;
+    background-color: vars.$primary-color;
+    color: #fff;
+    border-color: vars.$primary-color;
+}
+
+.card--pronto .btn:hover {
+    background-color: vars.$secondary-color;
+    color: vars.$primary-color;
+    border-color: vars.$secondary-color;
+}
+
+//Os outros Cards comecam aqui 
 .cards {
     display: flex;
-    gap: 24px;
+    gap: $card-gap;
 
     overflow-x: auto;
     padding-bottom: 16px;
@@ -157,7 +268,7 @@ main{
     border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
     border-radius: 12px;
     cursor: pointer;
-    background-color: white;
+    background-color: vars.$secondary-color; //verde
     color: vars.$primary-color;
     transition: all 0.3s ease;
 
@@ -171,23 +282,23 @@ main{
 
 .how-it-works {
     padding-top: $section-spacing;
+    padding-bottom: $section-spacing;
     background-color: #fff;
     text-align: center;
 }
 
-.section-title {
-    font-size: 32px;
-    font-weight: 600;
-    color: vars.$primary-color;
-    margin-bottom: 48px;
+.how-it-works .section-title {
+    margin-bottom: 40px;
 }
 
 .steps {
     max-width: 1200px;
     margin: 0 auto;
 
+    margin-top: 24px;
+
     display: grid;
-    gap: 32px;
+    gap: $space-4;
 
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
@@ -246,18 +357,19 @@ main{
 
 .diferenciais {
     text-align: center;
-    padding-top: 48px;
+    padding-top: $section-spacing;
+    padding-bottom: $section-spacing;
 
     &__titulo {
         font-size: 32px;
         font-weight: 600;
         color: #4b1f6f; // roxo do título
-        margin-bottom: 48px;
+        margin-bottom: $section-title-gap;
     }
 
     &__grid {
     display: grid;
-    gap: 24px;
+    gap: $card-gap;
     max-width: 1200px;
     margin: 0 auto;
     
@@ -304,6 +416,7 @@ main{
     pointer-events: auto !important; /* Força a aceitação de cliques */
     margin: 0 auto;
     padding-top: $section-spacing;
+    padding-bottom: $section-spacing;
     width: 100%; // Garante que ocupe a largura total
 
     &__titulo {
@@ -311,13 +424,13 @@ main{
         font-size: 32px;
         font-weight: 600;
         color: vars.$primary-color;
-        margin-bottom: 40px;
+        margin-bottom: $section-title-gap;
     }
 
     &__lista {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: $space-2;
         padding: 0 24px; // Respiro lateral para telas menores
     }
 }
@@ -425,6 +538,11 @@ main{
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
+    @media (max-width: 900px) {
+    .diferenciais__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 }
 
 /* Celular */
@@ -476,6 +594,32 @@ main{
     .diferencial-card p {
         font-size: 16px;
     }
+
+    .card--pronto {
+    max-width: 100%;
+    padding: 32px 20px;
+}
+
+.card--pronto .card-title {
+    font-size: 20px;
+}
+
+.card--pronto .card-subtitle {
+    font-size: 17px;
+}
+
+.card--pronto .card-price {
+    font-size: 48px;
+}
+
+.card--pronto .card-features li {
+    font-size: 16px;
+}
+
+.card--pronto .btn {
+    height: 48px;
+    font-size: 16px;
+}
 }
 
 @media (max-width: 768px) {

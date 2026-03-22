@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<main class="redefinir-senha-main">
+    <div class="page-container">
+        <div class="content-container">
+            <h1>Redefinir minha senha</h1>
+            <p>Digite sua nova senha</p>
+
+            <form class="login-box" [formGroup]="form" (ngSubmit)="enviar()">
+                <div class="form-group">
+                    <label>Nova Senha*</label>
+
+                    <div class="input-password">
+                        <input
+                            [type]="mostrarSenha ? 'text' : 'password'"
+                            formControlName="senha"
+                            autocomplete="new-password"
+                        />
+
+                        <button
+                            type="button"
+                            class="btn-eye"
+                            (click)="toggleSenha()"
+                            aria-label="Mostrar senha"
+                        >
+                            👁️
+                        </button>
+                    </div>
+
+                    <small *ngIf="form.get('senha')?.touched && form.get('senha')?.invalid">
+                        A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula,
+                        número e símbolo.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirme sua senha*</label>
+
+                    <div class="input-password">
+                        <input
+                            [type]="mostrarConfirmarSenha ? 'text' : 'password'"
+                            formControlName="confirmarSenha"
+                            (paste)="$event.preventDefault()"
+                        />
+
+                        <button
+                            type="button"
+                            class="btn-eye"
+                            (click)="toggleConfirmarSenha()"
+                            aria-label="Mostrar confirmação de senha"
+                        >
+                            👁️
+                        </button>
+                    </div>
+
+                    <small *ngIf="form.hasError('senhasDiferentes') && form.get('confirmarSenha')?.touched">
+                        As senhas não coincidem
+                    </small>
+                </div>
+
+                <button class="btn-entrar" type="submit">
+                    Redefinir minha senha
+                </button>
+
+                <p class="footer-text">
+                    Ainda não possui uma conta? <a routerLink="/form">Criar conta</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

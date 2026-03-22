@@ -38,14 +38,22 @@
         gap: 16px;
         margin-top: 8px;
 
+        a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
         a img {
-        width: 22px;
-        height: 22px;
-        transition: transform 0.2s ease;
+        width: 24px;
+        height: 24px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        cursor: pointer;
         }
 
         a:hover img {
-        transform: scale(1.1);
+        transform: scale(1.15);
+        opacity: 0.8;
         }
     }
 

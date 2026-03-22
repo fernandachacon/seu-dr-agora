@@ -19,6 +19,14 @@ export const routes: Routes = [
         loadComponent: () => import('./components/agendamento-publico/agendamento-publico').then(m => m.AgendamentoPublico),
     },
     {
+        path: 'esqueceu-senha',
+        loadComponent: () => import('./components/esqueceu-senha/esqueceu-senha').then(m => m.EsqueceuSenha),
+    },
+    {
+        path: 'redefinir-senha',
+        loadComponent: () => import('./components/redefinir-senha/redefinir-senha').then(m => m.RedefinirSenha),
+    },
+    {
         path: 'area-paciente',
         loadComponent: () =>
         import('./components/area-paciente/area-paciente').then(m => m.AreaPaciente),
