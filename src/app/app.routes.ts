@@ -73,6 +73,12 @@ export const routes: Routes = [
             import('./components/area-paciente/minhas-consultas/minhas-consultas')
                 .then(m => m.MinhasConsultas),
         },
+        {
+            path: 'resumo-pa',
+            loadComponent: () =>
+            import('./components/area-paciente/resumo-pa/resumo-pa')
+                .then(m => m.ResumoPa),
+        }
         ],
     },
 
