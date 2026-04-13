@@ -55,4 +55,12 @@ export class App {
   marcarConsulta() {
     this.router.navigate(['/form']);
   }
+
+   irParaAgendarConsulta() {
+    window.open(
+      'https://seudragora.agendar.cc/#/agendamentos/adicionar',
+      '_blank'
+    );
+  }
+
 }

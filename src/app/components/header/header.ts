@@ -41,4 +41,12 @@ export class Header {
     // Vai pra Home e aplica o fragment (#id)
     this.router.navigate(['/'], { fragment: id });
   }
+
+  irParaAgendarConsulta() {
+    window.open(
+      'https://seudragora.agendar.cc/#/agendamentos/adicionar',
+      '_blank'
+    );
+  }
+  
 }

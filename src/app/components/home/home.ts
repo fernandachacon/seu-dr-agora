@@ -67,5 +67,12 @@ export class Home {
     this.activeIndex = null;
   }
 
+  irParaFila() {
+    window.open(
+      'https://seudragora.agendar.cc/#/agendamentos/pronto-atendimento/entrar',
+      '_blank'
+    );
+  }
+
 }
 
