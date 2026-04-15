@@ -74,5 +74,12 @@ export class Home {
     );
   }
 
+   irParaAgendarConsulta() {
+    window.open(
+      'https://seudragora.agendar.cc/#/agendamentos/adicionar',
+      '_blank'
+    );
+  }
+
 }
 

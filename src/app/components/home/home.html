@@ -11,7 +11,7 @@
             />
 
             <img
-                ngSrc="/images/banner-home-principal.jpg"
+                ngSrc="/images/banner-home-web2.png"
                 alt="Banner principal"
                 width="1695"
                 height="500"
@@ -58,6 +58,21 @@
             <div class="cards">
                 <!-- Card -->
                 <div class="card">
+                    <h3 class="card-title">Atendimento Nutricional Especializado</h3>
+                    <span class="card-subtitle">Nutricionista</span>
+
+                    <div class="card-price">R$ 99</div>
+
+                    <ul class="card-features">
+                    <li>Dietas personalizadas e suplementação nutricional</li>
+                    <li>Reeducação alimentar e nutrição esportiva</li>
+                    <li>Saúde intestinal e comportamento alimentar</li>
+                    <li>Planejamento alimentar e nutrição clínica</li>
+                    <li>Alimentação saudável e estratégias alimentares</li>
+                </ul>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar Consulta</button>
+                </div>
+                <div class="card">
                     <h3 class="card-title">Atendimento Médico em Saúde Mental</h3>
                     <span class="card-subtitle">Médico Pós-graduando em Psiquiatria</span>
 
@@ -72,7 +87,7 @@
                     <li>Renovação de receitas, quando indicado</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/agendamento-publico">Agendar Consulta</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
@@ -92,7 +107,7 @@
                     <li>Distúrbios hormonais femininos</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Agendar Consulta</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
@@ -110,7 +125,7 @@
                     <li>Alterações do olfato e do paladar</li>
                 </ul>
 
-                    <button class="btn secondary" routerLink="/form">Agendar Consulta</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar Consulta</button>
                 </div>
                 <!-- Repita para os outros cards -->
             </div>
@@ -131,17 +146,16 @@
                     <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>1º encontro</li>
-                    <li>Acolhimento inicial</li>
-                    <li>Orientação psicológica baseada em evidências</li>
-                    <li>Ansiedade, estresse e transtornos de pânico</li>
-                    <li>Transtornos depressivos</li>
-                    <li>Alterações do humor</li>
-                    <li>Regulação emocional e manejo do estresse</li>
-                    <li>Sessões com duração de 3o minutos</li>
+                    <li>Sessão online individual de 30 minutos</li>
+                    <li>Acolhimento psicológico imediato e pontual</li>
+                    <li>Escuta ativa focada em crises emocionais</li>
+                    <li>Apoio em ansiedade, estresse, luto e pânico</li>
+                    <li>Clareza emocional para decisões difíceis</li>
+                    <li>Alívio emocional no momento presente</li>
+                    <li>Possível encaminhamento para outros serviços</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Agendar</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
@@ -153,17 +167,16 @@
                     <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>Ideal para acompanhamentos semanal</li>
-                    <li>Orientação psicológica baseada em evidências</li>
-                    <li>Ansiedade, estresse e transtornos de pânico</li>
-                    <li>Transtornos depressivos</li>
-                    <li>Alterações do humor</li>
-                    <li>Regulação emocional e manejo do estresse</li>
-                    <li>Sessões com duração de 3o minutos</li>
+                    <li>Pacote online com 4 sessões de 30 minutos</li>
+                    <li>Início da investigação clínica baseada em evidências</li>
+                    <li>Escuta ativa e anamnese personalizada</li>
+                    <li>Compreensão de pensamentos, emoções e comportamentos</li>
+                    <li>Técnicas comportamentais e regulação emocional</li>
+                    <li>Construção do vínculo terapêutico seguro</li>
                     
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Agendar</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 <!-- Card -->
@@ -175,17 +188,15 @@
                     <span class="card-subtitle">Valor por sessão<br><br></span>
 
                     <ul class="card-features">
-                    <li>Ideal para acompanhamento semanal, por 2 meses</li>
-                    <li>Menor valor por consulta</li>
-                    <li>Orientação psicológica baseada em evidências</li>
-                    <li>Ansiedade, estresse e transtornos de pânico</li>
-                    <li>Transtornos depressivos</li>
-                    <li>Alterações do humor</li>
-                    <li>Regulação emocional e manejo do estresse</li>
-                    <li>Sessões com duração de 3o minutos</li>
+                    <li>Psicoterapia para aprofundamento emocional</li>
+                    <li>Abordagem transdiagnóstica para casos complexos</li>
+                    <li>Foco na sua história, contexto e individualidade</li>
+                    <li>8 sessões interconectadas de desenvolvimento pessoal</li>
+                    <li>Regulação emocional e enfrentamento de crises</li>
+                    <li>Construção de autonomia e flexibilidade psicológica</li>
                     </ul>
 
-                    <button class="btn secondary" routerLink="/form">Agendar</button>
+                    <button class="btn secondary"(click)="irParaAgendarConsulta()">Agendar</button>
                 </div>
                 <!-- Repita para os outros cards -->
                 

@@ -32,8 +32,10 @@ export class Header {
   }
 
   irParaLogin() {
-    this.fecharMenu();
-    this.router.navigate(['/login']);
+      window.open(
+      'https://seudragora.agendar.cc/#/login',
+      '_blank'
+    );
   }
 
   irParaSecao(id: string) {
@@ -48,5 +50,5 @@ export class Header {
       '_blank'
     );
   }
-  
+
 }
