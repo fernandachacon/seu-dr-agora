@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "dist/seu-dr-agora/browser",
+  "outputDirectory": "dist/SEU_DR_AGORA/browser",
   "rewrites": [
     {
       "source": "/(.*)",
