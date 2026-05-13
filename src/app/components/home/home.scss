@@ -172,6 +172,100 @@ main{
     border-color: vars.$secondary-color;
 }
 
+/* ===== PSICOLOGIA ===== */
+
+.specialties--psico {
+    background: white;
+}
+.specialties--psico .section-title {
+    margin-bottom: 12px;
+}
+
+.cards.cards--single {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    padding-top: 12px;
+    padding-bottom: 0;
+
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+}
+
+.card.card--psico {
+    min-width: 0;
+    width: 100%;
+    max-width: 420px;
+
+    background: linear-gradient(
+    180deg,
+    rgba(79, 195, 161, 0.12) 0%,
+    rgba(79, 195, 161, 0.05) 100%
+);
+    border: 2px solid rgba(79, 195, 161, 0.35);
+    border-radius: 24px;
+    padding: 56px 32px 40px; 
+    box-shadow: 0 12px 32px rgba(75, 31, 111, 0.08);
+
+    position: relative;
+    overflow: visible;
+}
+
+.card--psico::before {
+    content: 'TERAPIA AGENDADA';
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translate(-50%, -50%); // 👈 ESSA LINHA FAZ O EFEITO PERFEITO MEIO DENTRO E MEIO FORA DO CARD
+
+    background-color: vars.$secondary-color;
+    color: vars.$primary-color;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    
+    padding: 8px 18px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.card--psico .card-title {
+    text-align: center;
+    font-size: 24px;
+}
+
+.card--psico .card-subtitle {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.card--psico .card-price {
+    text-align: center;
+    font-size: 64px;
+    color: vars.$purple-color;
+}
+
+.card--psico .card-features li {
+    font-size: 18px;
+}
+
+.card--psico .btn {
+    height: 52px;
+    font-size: 18px;
+    background-color: vars.$primary-color;
+    color: #fff;
+    border-color: vars.$primary-color;
+}
+
+.card--psico .btn:hover {
+    background-color: vars.$secondary-color;
+    color: vars.$primary-color;
+    border-color: vars.$secondary-color;
+}
+
 //Os outros Cards comecam aqui 
 .cards {
     display: flex;
