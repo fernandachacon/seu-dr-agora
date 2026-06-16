@@ -26,7 +26,7 @@ export class Home {
   faqs = [
     {
       pergunta: 'Qual o valor da consulta?',
-      resposta: 'Os valores mudam conforme a área de atendimento, mas estamos aqui para te orientar e encontrar a melhor opção para você.'
+      resposta: 'O valor da consulta é R$ 49,00 e o pagamento pode ser feito com cartão ou pix.'
     },
     {
       pergunta: 'Quais receituários podem ser emitidos digitalmente?',
@@ -67,9 +67,16 @@ export class Home {
     this.activeIndex = null;
   }
 
+  ngAfterViewInit() {
+  const script = document.createElement('script');
+  script.src = 'https://static.elfsight.com/platform/platform.js';
+  script.async = true;
+  document.body.appendChild(script);
+  }
+
   irParaFila() {
     window.open(
-      'https://seudragora.agendar.cc/#/agendamentos/pronto-atendimento/entrar',
+      'https://seudragora.agendar.cc/#/login',
       '_blank'
     );
   }

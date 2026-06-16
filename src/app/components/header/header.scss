@@ -1,6 +1,10 @@
 @use 'color-variables' as vars;
-@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
 @import "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap";
+
+/* ================= HEADER BASE ================= */
 
 .header {
     background-color: vars.$green-color;
@@ -18,8 +22,10 @@
     grid-template-columns: auto 1fr auto;
     align-items: center;
 
-    gap: 20px; // Adiciona um espaço entre a logo e o menu
+    gap: 20px;
 }
+
+/* ================= LOGO ================= */
 
 .left {
     display: flex;
@@ -27,36 +33,68 @@
 }
 
 .logo {
-    height: 60px; // A logo nunca será maior que o container (que tem 80px)
-    width: auto; // Mantém a proporção correta
+    height: 60px;
+    width: auto;
     display: block;
     cursor: pointer;
-    object-fit: contain; // Garante que a imagem não distorça
-    max-width: 100%;
+    object-fit: contain;
 }
 
-a {
-    color: vars.$primary-color;          
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px; 
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    text-decoration: none;  
-    .menu a {
-    cursor: pointer;
-    text-decoration: none;
-    white-space: nowrap;
-    }
-}
+/* ================= MENU DESKTOP ================= */
 
 .menu {
     display: flex;
     gap: 24px;
-    justify-self: center; // Mantém o menu centralizado no espaço disponível
+    justify-self: center;
     align-items: center;
-    min-width: 0;
-    flex-wrap: nowrap;              
+    flex-wrap: nowrap;
 }
+
+.menu a {
+    color: vars.$primary-color;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* ================= CTA BOTÃO ================= */
+
+.cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap:12px;
+}
+
+
+/* Botão WhatsApp */
+.whatsapp-btn {
+    background: white;
+    border: none;
+    width: 42px;
+    height: 42px;   
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.whatsapp-btn img {
+    width: 32px;
+    height: 32px;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================= HAMBURGER ================= */
 
 .menu-toggle {
     display: none;
@@ -65,36 +103,18 @@ a {
     font-size: 28px;
     cursor: pointer;
     color: vars.$primary-color;
-    padding: 0;
-    line-height: 1;
 }
 
-.menu a {
-    cursor: pointer;
-    text-decoration: none;
-}
-.cta-section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
+/* ================= RESPONSIVO ================= */
 
-/* telas um pouco menores antes do mobile */
+/* TABLET */
 @media (max-width: 1024px) {
     .header {
         padding: 0 16px;
     }
 
-    .header-container {
-        gap: 16px;
-    }
-
     .menu {
         gap: 16px;
-    }
-
-    .menu a {
-        font-size: 14px;
     }
 
     .logo {
@@ -102,31 +122,41 @@ a {
     }
 }
 
-/* mobile / tablet menor */
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
+
     .header {
         padding: 0 16px;
     }
 
+    /* 🔥 CORREÇÃO PRINCIPAL AQUI */
     .header-container {
-        grid-template-columns: 1fr auto;
-        min-height: 70px;
-        gap: 12px;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 10px;
+        height: 70px;
     }
 
+    /* LOGO */
     .logo {
         height: 45px;
     }
 
+    /* CTA CONTINUA VISÍVEL */
+    .cta-section {
+        display: flex;
+        justify-self: center;
+        transform: scale(0.9);
+    }
+
+    /* HAMBURGER */
     .menu-toggle {
         display: block;
         justify-self: end;
     }
 
-    .desktop-only {
-        display: none;
-    }
-
+    /* MENU MOBILE (dropdown) */
     .menu {
         position: absolute;
         top: 100%;
@@ -137,11 +167,10 @@ a {
         display: none;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         gap: 18px;
         padding: 20px 16px;
-        z-index: 1000;
 
+        z-index: 1000;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
 

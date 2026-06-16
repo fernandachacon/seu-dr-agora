@@ -51,4 +51,19 @@ export class Header {
     );
   }
 
+  irParaFila() {
+    window.open(
+      'https://seudragora.agendar.cc/#/login',
+      '_blank'
+    );
+  }
+
+  openWhatsApp() {
+    const phone = "558440420431";
+    const message = "Olá, quero me consultar agora.";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  }
+
 }

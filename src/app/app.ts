@@ -63,4 +63,11 @@ export class App {
     );
   }
 
+  irParaFila() {
+    window.open(
+      'https://seudragora.agendar.cc/#/login',
+      '_blank'
+    );
+  }
+
 }

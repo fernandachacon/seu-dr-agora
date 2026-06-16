@@ -33,13 +33,45 @@ main{
     width: 100%;
 }
 
-// Banner Responsivo
+
+/* Container precisa ser relativo para o botão ficar sobre ele */
+.banner-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Banner responsivo */
 .banner {
     width: 100%;
-    height: auto; // Mantém a proporção
+    height: auto;
     max-height: 500px;
     display: block;
-    object-fit: cover; // Garante que preencha bem o espaço
+    object-fit: cover;
+}
+
+/* Botão em cima do banner */
+.banner-btn {
+    position: absolute;
+
+    left: 6%;
+    bottom: 8%;
+
+    background: #ef7404;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Efeito hover */
+.banner-btn:hover {
+    background: #ef7404;
 }
 
 .container {
@@ -362,8 +394,8 @@ main{
     border: 2px solid rgba(183, 159, 247, 0.30); /* Borda roxa clara, 2 pixels de largura, estilo sólido */
     border-radius: 12px;
     cursor: pointer;
-    background-color: vars.$secondary-color; //verde
-    color: vars.$primary-color;
+    background-color: #ef7404; 
+    color: white;
     transition: all 0.3s ease;
 
     &:hover {
@@ -449,7 +481,7 @@ main{
     }
 }
 
-.diferenciais {
+.diferenciais { 
     text-align: center;
     padding-top: $section-spacing;
     padding-bottom: $section-spacing;
@@ -742,5 +774,30 @@ main{
     }
 }
 
+.banner-video__wrapper {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+}
 
+.banner-video__imagem {
+    width: 100%;
+    display: block;
+}
+
+.banner-video__player {
+    position: absolute;
+
+    /* ajuste conforme necessário */
+    top: 5%;
+    left: 60.5%;
+
+    width: 20%;
+    height: 90%;
+
+    border-radius: 32px;
+    object-fit: cover;
+
+    background: #fff;
+}
 

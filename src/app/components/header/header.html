@@ -19,17 +19,25 @@
 
     <nav class="menu" [class.aberto]="menuAberto">
       <a (click)="irParaSecao('inicio')">INÍCIO</a>
-      <a (click)="irParaSecao('areas')">ÁREAS DE ATUAÇÃO</a>
+      <!--<a (click)="irParaSecao('areas')">ÁREAS DE ATUAÇÃO</a>-->
       <a (click)="irParaSecao('como-agendar')">COMO AGENDAR</a>
       <a (click)="irParaSecao('diferenciais')">DIFERENCIAIS</a>
       <a (click)="irParaSecao('duvidas')">DÚVIDAS</a>
       <a (click)="irParaLogin()">ENTRAR</a>
     </nav>
 
-    <section class="cta-section desktop-only">
+
+
+    <section class="cta-section">
+
+    <button class="whatsapp-btn" (click)="openWhatsApp()" title="Fale conosco no WhatsApp">
+        <img src="/images/icone-whats.png" alt="WhatsApp" />
+    </button>
+
+
       <btn-primary
-        btn-text="MARCAR CONSULTA"
-        (click)="irParaAgendarConsulta()">
+        btn-text="QUERO ME CONSULTAR"
+        (click)="irParaFila()">
       </btn-primary>
     </section>
 
