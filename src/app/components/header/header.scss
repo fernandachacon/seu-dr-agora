@@ -152,6 +152,30 @@
         transform: scale(0.9);
     }
 
+    @media (max-width: 768px) {
+
+    .header-container {
+        grid-template-columns: auto 1fr auto;
+        gap: 6px;
+    }
+
+    .cta-section {
+        transform: none;
+        justify-self: end;
+        gap: 4px;
+    }
+
+    .whatsapp-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .whatsapp-btn img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
     /* HAMBURGER */
     .menu-toggle {
         display: block;

@@ -44,15 +44,14 @@ main{
 .banner {
     width: 100%;
     height: auto;
-    max-height: 500px;
+    //max-height: 500px;
     display: block;
-    object-fit: cover;
+    //object-fit: cover;
 }
 
 /* Botão em cima do banner */
 .banner-btn {
     position: absolute;
-
     left: 6%;
     bottom: 2%;
 
@@ -64,9 +63,7 @@ main{
 
     font-size: 18px;
     font-weight: 600;
-
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
 /* Efeito hover */
@@ -750,16 +747,33 @@ main{
 
 @media (max-width: 768px) {
     .banner {
-        height: 60vh;        // ocupa 60% da altura da tela
-        min-height: 360px;   // garante impacto visual
-        object-fit: cover;  // corta sem distorcer
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .banner-btn {
+        left: 50%;
+        transform: translateX(-50%);
+
+        bottom: -10px;
+
+        width: 80%;
+        max-width: 320px;
+
+        font-size: 16px;
+        padding: 16px;
     }
 }
-@media (max-width: 480px) {
+
+    @media (max-width: 480px) {
     .banner {
-        height: 70vh;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 }
+
 @media (max-width: 768px) {
     .main-section {
         padding-bottom: 24px;
