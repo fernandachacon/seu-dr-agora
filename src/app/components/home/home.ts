@@ -26,11 +26,7 @@ export class Home {
   faqs = [
     {
       pergunta: 'Qual o valor da consulta?',
-      resposta: 'O valor da consulta é R$ 49,00 e o pagamento pode ser feito com cartão ou pix.'
-    },
-    {
-      pergunta: 'Quais receituários podem ser emitidos digitalmente?',
-      resposta: 'Emitimos receitas simples e controladas de forma digital, com toda a segurança, cuidado e praticidade, sempre dentro das normas legais.'
+      resposta: 'O valor da consulta de pronto atendimento é R$ 49,00 e o pagamento pode ser feito com cartão ou pix.'
     },
     {
       pergunta: 'Como acessar a receita digital?',
