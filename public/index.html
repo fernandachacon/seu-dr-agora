@@ -15,13 +15,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="theme-color" content="#480A60">
 <meta property="og:title" content="Médico agora por R$ 49, sem sair de casa">
 <meta property="og:description" content="Consulta com clínico geral por videochamada, na hora. Das 7h às 22h, todos os dias.">
-<meta property="og:image" content="img/hero-seudragora.png">
+<meta property="og:image" content="https://www.seudragora.com.br/img/hero-seudragora.png">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32">
 <link rel="icon" href="img/favicon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-seudragora-600.webp" imagesrcset="img/hero-seudragora-600.webp 600w, img/hero-seudragora.webp 990w" imagesizes="(max-width: 760px) 120vw, 495px" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/style.css">
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 </head>
@@ -90,7 +92,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </div>
     <div class="hero-img">
-      <img id="mock" src="img/hero-seudragora.png" alt="Paciente sorrindo após a consulta" width="990" height="1000">
+      <img id="mock" src="img/hero-seudragora.webp" srcset="img/hero-seudragora-600.webp 600w, img/hero-seudragora.webp 990w" sizes="(max-width: 760px) 120vw, 495px" alt="Paciente sorrindo após a consulta" width="990" height="1000" fetchpriority="high" decoding="async">
       <div class="hero-badge"><i></i>Atendimento na hora</div>
       <div class="hero-badge hero-badge--2"><svg><use href="#i-shield"/></svg>Médicos com CRM ativo</div>
       <div class="hero-badge hero-badge--3"><b>R$ 49</b> · Pix ou cartão</div>
@@ -234,7 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="cols">
       <div>Seu Doutor Agora Ltda<br>CNPJ 63.614.980/0001-32 · CRM/PJ 3830-RN<br>Responsável técnica: Dra. Ludmilla Matias Medeiros · CRM 14967-RN</div>
       <div>R. Eletricista Elias Ferreira, 3760, Lote 59<br>Parque das Colinas, Natal/RN<br>CEP 59.066-050</div>
-      <div><a class="js-whatsapp" data-cta="whatsapp_rodape" href="#">WhatsApp (84) 4042-0431</a><br><a href="mailto:atendimento@seudragora.com.br">atendimento@seudragora.com.br</a><br><a href="https://instagram.com/seudragora_" target="_blank" rel="noopener" data-cta="instagram">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61583383084985" target="_blank" rel="noopener">Facebook</a></div>
+      <div><a class="js-whatsapp" data-cta="whatsapp_rodape" href="#">WhatsApp (84) 4042-0431</a><br><a class="tap" href="mailto:atendimento@seudragora.com.br">atendimento@seudragora.com.br</a><br><a href="https://instagram.com/seudragora_" target="_blank" rel="noopener" data-cta="instagram">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61583383084985" target="_blank" rel="noopener">Facebook</a></div>
     </div>
     <div class="links">
       <a href="privacidade.html">Política de privacidade</a>
@@ -253,7 +255,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
 <!-- barra fixa mobile -->
-<div class="mbar" aria-hidden="true">
+<div class="mbar">
   <div class="p">R$ 49<small>na hora · 7h às 22h</small></div>
   <a href="https://seudragora.agendar.cc/#/login" class="btn btn--cta" data-platform data-cta="barra_mobile">Consultar agora</a>
 </div>
