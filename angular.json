@@ -11,9 +11,10 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "stylePreprocessorOptions": 
-            {
-              "includePaths": ["src"]
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
             },
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -23,7 +24,13 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "src/styles.scss"
+            ],
+            "index": {
+              "input": "src/index.html",
+              "output": "app.html"
+            }
           },
           "configurations": {
             "development": {

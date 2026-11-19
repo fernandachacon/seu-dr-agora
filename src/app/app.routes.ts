@@ -4,7 +4,7 @@ export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        loadComponent: () => import('./components/home/home').then(m => m.Home),
+        loadComponent: () => import('./components/inicio/inicio').then(m => m.Inicio),
     },
     {
         path: 'form',
